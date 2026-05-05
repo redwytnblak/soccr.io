@@ -1,0 +1,2920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cut — v3 · Soccer-Dominant · Apr 27 → Sep 7, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0a09;
+  --bg-elevated: #15110e;
+  --bg-card: #1a1612;
+  --bg-card-hover: #221d18;
+  --text-primary: #f5f0e8;
+  --text-secondary: #a39b8e;
+  --text-muted: #6a655c;
+  --accent: #c97b4a;
+  --accent-dim: #8a5532;
+  --accent-bright: #e89164;
+  --soccer: #7d9377;
+  --soccer-bright: #9bb094;
+  --band: #9d7eaf;
+  --plyo: #c9a14a;
+  --mobility: #6b8a9e;
+  --core: #5d8a8a;
+  --warning: #c9a14a;
+  --border: #2a2520;
+  --border-dim: #1f1b17;
+  --serif: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Manrope', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image:
+    radial-gradient(ellipse at top, rgba(125, 147, 119, 0.06), transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(201, 123, 74, 0.04), transparent 60%);
+  min-height: 100vh;
+}
+
+::selection { background: var(--soccer); color: var(--bg); }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+nav.top {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(12, 10, 9, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-dim);
+}
+nav.top .inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px; max-width: 1180px; margin: 0 auto;
+  font-family: var(--mono); font-size: 12px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+nav.top .brand { color: var(--text-primary); font-weight: 600; }
+nav.top .brand .accent { color: var(--soccer); }
+nav.top .links { display: flex; gap: 18px; list-style: none; }
+nav.top .links a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s ease; }
+nav.top .links a:hover { color: var(--soccer-bright); }
+@media (max-width: 800px) { nav.top .links { display: none; } }
+
+/* HERO */
+.hero {
+  padding: 100px 0 70px;
+  border-bottom: 1px solid var(--border-dim);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: 60px; right: -40px;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(125, 147, 119, 0.10), transparent 70%);
+  pointer-events: none;
+}
+.hero .meta {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--soccer-bright); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+}
+.hero .meta::before {
+  content: ''; display: inline-block; width: 32px; height: 1px; background: var(--soccer);
+}
+.hero .version {
+  font-family: var(--mono); font-size: 10px; color: var(--text-muted);
+  letter-spacing: 0.1em; padding: 3px 8px; border: 1px solid var(--border);
+  margin-left: auto;
+}
+.hero h1 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(48px, 8vw, 92px);
+  line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 28px;
+  font-variation-settings: "opsz" 144;
+}
+.hero h1 em {
+  font-style: italic; font-weight: 300; color: var(--soccer-bright);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.hero .lede {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.2vw, 22px);
+  line-height: 1.5; color: var(--text-secondary);
+  max-width: 720px; font-weight: 300; font-style: italic;
+}
+.hero .stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  margin-top: 56px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.hero .stats .stat {
+  padding: 22px 22px 22px 0; border-right: 1px solid var(--border);
+}
+.hero .stats .stat:last-child { border-right: none; }
+.hero .stats .label {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 8px;
+}
+.hero .stats .value {
+  font-family: var(--serif); font-size: 30px; font-weight: 500;
+  color: var(--text-primary); font-variation-settings: "opsz" 144;
+}
+.hero .stats .value .small {
+  font-size: 14px; color: var(--text-secondary);
+  font-weight: 400; margin-left: 4px;
+}
+@media (max-width: 720px) {
+  .hero { padding: 50px 0 40px; }
+  .hero .stats { grid-template-columns: repeat(2, 1fr); }
+  .hero .stats .stat:nth-child(2) { border-right: none; }
+  .hero .stats .stat:nth-child(1), .hero .stats .stat:nth-child(2) {
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+/* SECTIONS */
+section { padding: 70px 0; border-bottom: 1px solid var(--border-dim); }
+section:last-of-type { border-bottom: none; }
+.section-meta {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--soccer-bright); margin-bottom: 14px;
+}
+.section-title {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(36px, 5vw, 52px);
+  line-height: 1.05; letter-spacing: -0.02em;
+  margin-bottom: 22px; font-variation-settings: "opsz" 144;
+}
+.section-title em { font-style: italic; color: var(--soccer-bright); font-weight: 300; }
+.section-intro {
+  font-family: var(--serif); font-size: 19px; line-height: 1.6;
+  color: var(--text-secondary); max-width: 760px;
+  font-weight: 300; margin-bottom: 48px;
+}
+
+/* WHAT CHANGED */
+.changes {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border);
+}
+.change-card {
+  background: var(--bg-card); padding: 28px;
+}
+.change-card .label {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--soccer-bright); margin-bottom: 14px;
+}
+.change-card h4 {
+  font-family: var(--serif); font-size: 20px; font-weight: 500;
+  margin-bottom: 10px; letter-spacing: -0.01em;
+}
+.change-card p {
+  color: var(--text-secondary); font-size: 14px; line-height: 1.6;
+}
+.change-card .before-after {
+  display: flex; gap: 12px; margin-top: 16px;
+  font-family: var(--mono); font-size: 11px;
+  padding-top: 14px; border-top: 1px solid var(--border-dim);
+}
+.change-card .before {
+  flex: 1; color: var(--text-muted);
+  text-decoration: line-through; text-decoration-color: var(--text-muted);
+}
+.change-card .after { flex: 1; color: var(--soccer-bright); }
+@media (max-width: 800px) { .changes { grid-template-columns: 1fr; } }
+
+/* LEGEND */
+.module-legend {
+  display: flex; gap: 28px; flex-wrap: wrap;
+  margin-bottom: 40px; padding: 20px 24px;
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.08em; color: var(--text-secondary);
+  text-transform: uppercase;
+}
+.module-legend .key { display: flex; align-items: center; gap: 8px; }
+.module-legend .swatch { width: 10px; height: 10px; border-radius: 50%; }
+.module-legend .swatch.soccer { background: var(--soccer); }
+.module-legend .swatch.core { background: var(--accent); }
+.module-legend .swatch.coretrain { background: var(--core); }
+.module-legend .swatch.mobility { background: var(--mobility); }
+.module-legend .swatch.band { background: var(--band); }
+.module-legend .swatch.plyo { background: var(--plyo); }
+
+/* DAY BLOCKS */
+.day-block {
+  background: var(--bg-card); border: 1px solid var(--border);
+  margin-bottom: 1px;
+}
+
+/* COLLAPSIBLE DAY BLOCKS */
+.day-block .day-head {
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.18s ease;
+  position: relative;
+  grid-template-columns: 60px 80px 1fr auto 32px !important;
+}
+/* Phase-section heads have 4 children — collapse the date column */
+.day-block .day-head.phase-head {
+  grid-template-columns: 60px 1fr auto 32px !important;
+}
+.day-block .day-head:hover {
+  background: var(--bg-card-hover);
+}
+.day-block .day-head .seq {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  padding-top: 3px;
+}
+.day-block .day-head .seq strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144;
+  margin-bottom: 1px;
+  line-height: 1;
+}
+.day-block .day-head .date {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  text-transform: none;
+  margin-top: 4px;
+}
+.day-block .day-head .day-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.day-block .day-head .day-label .d {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+.day-block .day-head .day-label .date {
+  margin-top: 0;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  text-transform: none;
+}
+.day-block .day-head .chevron {
+  width: 14px;
+  height: 14px;
+  border-right: 1.5px solid var(--text-secondary);
+  border-bottom: 1.5px solid var(--text-secondary);
+  transform: rotate(45deg);
+  transition: transform 0.25s ease;
+  align-self: center;
+  margin-bottom: 4px;
+}
+.day-block.collapsed .day-head .chevron {
+  transform: rotate(-45deg);
+  margin-bottom: 0;
+  margin-top: 4px;
+}
+.day-block.collapsed .day-head {
+  border-bottom: 1px solid var(--border-dim);
+}
+.day-body {
+  max-height: 8000px;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.25s ease;
+  opacity: 1;
+}
+.day-block.collapsed .day-body {
+  max-height: 0;
+  opacity: 0;
+  border-top: none;
+}
+
+/* COLLAPSE-ALL CONTROL BAR */
+.collapse-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  margin-bottom: 18px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  flex-wrap: wrap;
+}
+.collapse-controls .label-side {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.collapse-controls .label-side::before {
+  content: ''; width: 24px; height: 1px; background: var(--accent);
+  display: inline-block;
+}
+.collapse-controls .btns {
+  display: flex; gap: 8px;
+}
+.collapse-controls button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 7px 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  border-radius: 2px;
+}
+.collapse-controls button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(201, 123, 74, 0.05);
+}
+.collapse-controls button.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(201, 123, 74, 0.08);
+}
+
+@media (max-width: 720px) {
+  .day-block .day-head {
+    grid-template-columns: 50px 60px 1fr 24px !important;
+    gap: 12px !important;
+    padding: 16px 18px !important;
+  }
+  .day-block .day-head .duration { display: none; }
+  .day-block .day-head .seq strong { font-size: 16px; }
+  .day-block .day-head .date { font-size: 9px; }
+  .collapse-controls { flex-direction: column; align-items: flex-start; }
+}
+
+.day-block .day-head {
+  display: grid; grid-template-columns: 80px 1fr auto;
+  gap: 20px; align-items: baseline;
+  padding: 22px 28px; background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+}
+.day-block .day-head .day-num {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);
+}
+.day-block .day-head .day-name {
+  font-family: var(--serif); font-size: 22px; font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.day-block .day-head .duration {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--text-muted); letter-spacing: 0.05em;
+}
+.day-block.soccer-day .day-head { background: linear-gradient(90deg, rgba(125, 147, 119, 0.10), var(--bg-elevated)); }
+.day-block.soccer-day .day-head .day-num { color: var(--soccer-bright); }
+.day-block.match-day .day-head .day-num { color: var(--soccer-bright); }
+.day-block.pro-day .day-head .day-num { color: var(--warning); }
+
+.day-section {
+  padding: 22px 28px;
+  border-bottom: 1px solid var(--border-dim);
+}
+.day-section:last-child { border-bottom: none; }
+
+.day-section .label {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.day-section .label::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+}
+.day-section.core .label { color: var(--accent); }
+.day-section.core .label::before { background: var(--accent); }
+.day-section.coretrain .label { color: var(--core); }
+.day-section.coretrain .label::before { background: var(--core); }
+.day-section.soccer .label { color: var(--soccer-bright); }
+.day-section.soccer .label::before { background: var(--soccer); }
+.day-section.mobility .label { color: var(--mobility); }
+.day-section.mobility .label::before { background: var(--mobility); }
+.day-section.band .label { color: var(--band); }
+.day-section.band .label::before { background: var(--band); }
+.day-section.plyo .label { color: var(--plyo); }
+.day-section.plyo .label::before { background: var(--plyo); }
+
+.day-section .label .opt {
+  margin-left: 8px; font-size: 9px; color: var(--text-muted);
+  border: 1px solid var(--text-muted); padding: 1px 6px; border-radius: 2px;
+}
+.day-section .label .req {
+  margin-left: 8px; font-size: 9px; color: var(--soccer-bright);
+  border: 1px solid var(--soccer); padding: 1px 6px; border-radius: 2px;
+}
+
+.exercise-list {
+  display: grid; grid-template-columns: 1fr; gap: 8px;
+}
+.exercise-row {
+  display: grid;
+  grid-template-columns: 28px 1fr 140px 110px;
+  gap: 14px; align-items: baseline;
+  padding: 8px 0; border-bottom: 1px dashed var(--border-dim);
+  font-size: 14px;
+}
+.exercise-row:last-child { border-bottom: none; }
+.exercise-row .num {
+  font-family: var(--mono); font-size: 11px; color: var(--text-muted);
+}
+.exercise-row .name { color: var(--text-primary); font-weight: 500; }
+.exercise-row .name .detail {
+  display: block; font-size: 12px; color: var(--text-muted);
+  font-weight: 400; margin-top: 2px; line-height: 1.4;
+}
+.exercise-row .equip {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--text-secondary); letter-spacing: 0.03em;
+}
+.exercise-row .scheme {
+  font-family: var(--mono); font-size: 12px;
+  color: var(--accent); white-space: nowrap; text-align: right;
+}
+
+/* Phase scheme grid — inline display of all 5 phases */
+.exercise-row.has-phases {
+  grid-template-columns: 28px 1fr 130px 320px;
+}
+.scheme-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+  width: 100%;
+  font-family: var(--mono);
+}
+.scheme-grid .pp {
+  background: rgba(201, 123, 74, 0.06);
+  border: 1px solid rgba(201, 123, 74, 0.20);
+  padding: 5px 3px;
+  text-align: center;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 36px;
+}
+.scheme-grid .pp .ph {
+  display: block;
+  color: var(--text-muted);
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+.scheme-grid .pp .pv {
+  color: #d18a5e;
+  font-weight: 600;
+  font-size: 10.5px;
+  white-space: nowrap;
+}
+.scheme-grid .pp.skip { opacity: 0.30; background: transparent; }
+.scheme-grid .pp.skip .pv { color: var(--text-muted); }
+
+@media (max-width: 900px) {
+  .exercise-row.has-phases {
+    grid-template-columns: 28px 1fr;
+    gap: 8px;
+  }
+  .exercise-row.has-phases .equip {
+    grid-column: 2; font-size: 11px; text-align: left;
+    color: var(--text-muted);
+  }
+  .exercise-row.has-phases .scheme-grid {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 720px) {
+  .exercise-row {
+    grid-template-columns: 28px 1fr;
+    gap: 8px;
+  }
+  .exercise-row .equip,
+  .exercise-row .scheme {
+    grid-column: 2; font-size: 11px; text-align: left;
+    color: var(--text-muted);
+  }
+  .exercise-row .scheme { color: var(--accent); }
+  .day-block .day-head { grid-template-columns: 1fr; gap: 6px; }
+  .scheme-grid .pp { min-height: 30px; padding: 3px 2px; }
+  .scheme-grid .pp .ph { font-size: 8px; }
+  .scheme-grid .pp .pv { font-size: 9.5px; }
+}
+
+/* SOCCER SESSION BLOCKS */
+.session-block {
+  background: rgba(125, 147, 119, 0.05);
+  border-left: 3px solid var(--soccer);
+  padding: 18px 22px;
+  margin-bottom: 14px;
+}
+.session-block:last-child { margin-bottom: 0; }
+.session-block .block-head {
+  display: flex; align-items: baseline; gap: 14px;
+  margin-bottom: 10px; flex-wrap: wrap;
+}
+.session-block .block-num {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.15em; color: var(--soccer-bright);
+}
+.session-block .block-title {
+  font-family: var(--serif); font-size: 17px; font-weight: 500;
+  color: var(--text-primary); letter-spacing: -0.01em;
+}
+.session-block .block-time {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--text-muted); margin-left: auto; letter-spacing: 0.05em;
+}
+.session-block .drill-line {
+  display: grid;
+  grid-template-columns: 1fr 130px;
+  gap: 12px; padding: 6px 0;
+  border-bottom: 1px dashed var(--border-dim);
+  font-size: 13.5px; align-items: baseline;
+}
+.session-block .drill-line:last-child { border-bottom: none; }
+.session-block .drill-line .name { color: var(--text-secondary); }
+.session-block .drill-line .name strong {
+  color: var(--text-primary); font-weight: 500;
+}
+.session-block .drill-line .scheme {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--soccer-bright); text-align: right;
+}
+.session-block .drill-line .pos-tags {
+  display: inline-flex; gap: 4px; margin-left: 8px;
+  vertical-align: middle;
+}
+.session-block .drill-line .pos {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  padding: 2px 5px;
+  border-radius: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  vertical-align: middle;
+  line-height: 1;
+}
+.session-block .drill-line .pos.irb {
+  background: rgba(125, 147, 119, 0.15);
+  color: #9ab093;
+  border: 1px solid rgba(125, 147, 119, 0.35);
+}
+.session-block .drill-line .pos.lw {
+  background: rgba(157, 126, 175, 0.15);
+  color: #b89cc7;
+  border: 1px solid rgba(157, 126, 175, 0.35);
+}
+.session-block .drill-line .pos.both {
+  background: rgba(201, 161, 74, 0.12);
+  color: #d6b376;
+  border: 1px solid rgba(201, 161, 74, 0.32);
+}
+.session-block .drill-line .why {
+  display: block;
+  margin-top: 3px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  font-style: italic;
+}
+@media (max-width: 600px) {
+  .session-block .drill-line { grid-template-columns: 1fr; }
+  .session-block .drill-line .scheme { text-align: left; }
+}
+
+/* POSITION LEGEND BAR */
+.position-legend {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 14px 20px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+.position-legend .pl-label {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 10px;
+  padding-right: 14px;
+  border-right: 1px solid var(--border);
+}
+.position-legend .pl-key {
+  display: flex; align-items: center; gap: 8px;
+  color: var(--text-secondary);
+}
+.position-legend .pl-key .pos {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.position-legend .pl-key .pos.irb {
+  background: rgba(125, 147, 119, 0.15);
+  color: #9ab093;
+  border: 1px solid rgba(125, 147, 119, 0.35);
+}
+.position-legend .pl-key .pos.lw {
+  background: rgba(157, 126, 175, 0.15);
+  color: #b89cc7;
+  border: 1px solid rgba(157, 126, 175, 0.35);
+}
+.position-legend .pl-key .pos.both {
+  background: rgba(201, 161, 74, 0.12);
+  color: #d6b376;
+  border: 1px solid rgba(201, 161, 74, 0.32);
+}
+
+/* Player profile grid responsive */
+@media (max-width: 800px) {
+  #profile > div > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* PHASES */
+.phase {
+  margin-bottom: 70px; padding-bottom: 60px;
+  border-bottom: 1px solid var(--border-dim);
+}
+.phase:last-child { border-bottom: none; }
+.phase-header {
+  display: flex; align-items: baseline; gap: 24px;
+  margin-bottom: 24px; flex-wrap: wrap;
+}
+.phase-num {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.2em; color: var(--accent);
+}
+.phase-name {
+  font-family: var(--serif); font-size: 34px; font-weight: 500;
+  letter-spacing: -0.02em; font-variation-settings: "opsz" 144;
+}
+.phase-name em { font-style: italic; color: var(--soccer-bright); font-weight: 300; }
+.phase-weeks {
+  font-family: var(--mono); font-size: 12px;
+  color: var(--text-muted); letter-spacing: 0.05em; margin-left: auto;
+}
+.phase-focus {
+  font-family: var(--serif); font-size: 17px; font-style: italic;
+  color: var(--text-secondary); font-weight: 300;
+  margin-bottom: 28px; padding-left: 22px;
+  border-left: 2px solid var(--soccer); max-width: 760px;
+}
+
+/* EQUIPMENT */
+.equip-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border);
+}
+.equip-card {
+  background: var(--bg-card); padding: 24px 26px;
+}
+.equip-card h4 {
+  font-family: var(--serif); font-size: 19px; font-weight: 500;
+  margin-bottom: 8px; letter-spacing: -0.01em;
+}
+.equip-card .essential {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--soccer-bright); margin-bottom: 14px;
+}
+.equip-card.optional .essential { color: var(--mobility); }
+.equip-card ul {
+  list-style: none; padding: 0; font-size: 13.5px;
+  color: var(--text-secondary); line-height: 1.7;
+}
+.equip-card li { padding-left: 18px; position: relative; margin-bottom: 6px; }
+.equip-card li::before {
+  content: '·'; position: absolute; left: 6px;
+  color: var(--soccer); font-size: 22px; line-height: 1; top: -2px;
+}
+@media (max-width: 800px) { .equip-grid { grid-template-columns: 1fr; } }
+
+/* MODULE BLOCKS */
+.module-block {
+  background: var(--bg-card); border: 1px solid var(--border);
+  margin-bottom: 24px; overflow: hidden;
+}
+.module-block .head {
+  padding: 20px 28px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 16px;
+  background: var(--bg-elevated);
+}
+.module-block .head .dot {
+  width: 10px; height: 10px; border-radius: 50%;
+}
+.module-block.mobility .head .dot { background: var(--mobility); }
+.module-block.band .head .dot { background: var(--band); }
+.module-block.plyo .head .dot { background: var(--plyo); }
+.module-block.core .head .dot { background: var(--core); }
+.module-block .head h3 {
+  font-family: var(--serif); font-size: 22px; font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.module-block .head .when {
+  margin-left: auto; font-family: var(--mono); font-size: 11px;
+  color: var(--text-muted); letter-spacing: 0.05em;
+}
+.module-block .body {
+  padding: 24px 28px; font-size: 14.5px;
+  line-height: 1.65; color: var(--text-secondary);
+}
+.module-block .body p:not(:last-child) { margin-bottom: 14px; }
+.module-block .body strong { color: var(--text-primary); font-weight: 600; }
+
+/* MODULE-BLOCK COLLAPSIBLE BEHAVIOR */
+.module-block .head {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  padding-right: 56px;
+  transition: background 0.18s ease;
+}
+.module-block .head:hover {
+  filter: brightness(1.15);
+}
+.module-block .head::after {
+  content: '';
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-right: 1.5px solid var(--text-secondary);
+  border-bottom: 1.5px solid var(--text-secondary);
+  transform: translateY(-65%) rotate(45deg);
+  transition: transform 0.25s ease;
+}
+.module-block.mobility .head::after { border-color: var(--mobility); }
+.module-block.band .head::after { border-color: var(--band); }
+.module-block.plyo .head::after { border-color: var(--plyo); }
+.module-block.core .head::after { border-color: var(--core); }
+.module-block.collapsed .head::after {
+  transform: translateY(-25%) rotate(-45deg);
+}
+.module-block.collapsed .head {
+  border-bottom: 1px solid var(--border-dim);
+}
+.module-block .body {
+  max-height: 4000px;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.25s ease, padding 0.25s ease;
+  opacity: 1;
+}
+.module-block.collapsed .body {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-top: none;
+}
+
+.module-routine {
+  margin-top: 18px;
+  border-top: 1px solid var(--border-dim);
+  padding-top: 18px;
+}
+.module-routine h5 {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 12px;
+}
+.module-routine .move {
+  display: grid; grid-template-columns: 1fr 120px;
+  gap: 16px; padding: 8px 0;
+  border-bottom: 1px dashed var(--border-dim); font-size: 13.5px;
+  align-items: baseline;
+}
+.module-routine .move:last-child { border-bottom: none; }
+.module-routine .move .name { color: var(--text-primary); }
+.module-routine .move .name .desc {
+  display: block; color: var(--text-muted); font-size: 12px;
+  margin-top: 2px; line-height: 1.4;
+}
+.module-routine .move .scheme {
+  font-family: var(--mono); font-size: 11.5px;
+  color: var(--mobility); text-align: right;
+}
+.module-block.band .module-routine .move .scheme { color: var(--band); }
+.module-block.plyo .module-routine .move .scheme { color: var(--plyo); }
+.module-block.core .module-routine .move .scheme { color: var(--core); }
+
+@media (max-width: 600px) {
+  .module-routine .move { grid-template-columns: 1fr; }
+  .module-routine .move .scheme { text-align: left; }
+}
+
+/* WEEK SUMMARY TABLE */
+.week-summary {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr 1fr;
+  gap: 1px; background: var(--border); border: 1px solid var(--border);
+  margin-top: 32px;
+}
+.week-summary > div {
+  background: var(--bg-card); padding: 14px 18px;
+  font-size: 13.5px;
+}
+.week-summary .head {
+  background: var(--bg-elevated);
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.week-summary .day-cell {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--accent); letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.week-summary .day-cell.soccer { color: var(--soccer-bright); }
+.week-summary .day-cell.match { color: var(--soccer-bright); }
+.week-summary .day-cell.pro { color: var(--warning); }
+.week-summary .focus { color: var(--text-secondary); }
+.week-summary .focus strong { color: var(--text-primary); font-weight: 500; }
+.week-summary .duration {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--text-muted); letter-spacing: 0.05em;
+}
+@media (max-width: 720px) {
+  .week-summary { grid-template-columns: 60px 1fr; }
+  .week-summary .head:nth-child(3),
+  .week-summary .head:nth-child(4) { display: none; }
+  .week-summary .duration { display: none; }
+}
+
+/* FOOTER */
+footer {
+  padding: 44px 0; border-top: 1px solid var(--border-dim);
+  text-align: center; color: var(--text-muted);
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+}
+footer .top-line { margin-bottom: 12px; color: var(--text-secondary); }
+
+
+/* ===================== CALENDAR ===================== */
+#calendar {
+  padding: 70px 0 60px;
+  border-bottom: 1px solid var(--border-dim);
+  background: linear-gradient(180deg, rgba(125, 147, 119, 0.02), transparent);
+}
+#calendar .container { max-width: 1180px; }
+.cal-header {
+  margin-bottom: 32px;
+}
+.cal-header .meta {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 14px;
+}
+.cal-header .meta::before {
+  content: ''; width: 30px; height: 1px; background: var(--accent);
+  display: inline-block;
+}
+.cal-header h2 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(36px, 5vw, 52px);
+  line-height: 1.05; letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  font-variation-settings: "opsz" 144;
+}
+.cal-header h2 em { font-style: italic; color: var(--accent); font-weight: 300; }
+.cal-header p {
+  font-family: var(--serif);
+  font-size: 17px; line-height: 1.55;
+  color: var(--text-secondary);
+  font-weight: 300;
+  max-width: 680px;
+  margin-bottom: 28px;
+}
+
+.cal-legend {
+  display: flex; flex-wrap: wrap; gap: 14px;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  margin-bottom: 28px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.05em; color: var(--text-muted);
+  text-transform: uppercase;
+}
+.cal-legend .key {
+  display: flex; align-items: center; gap: 6px;
+}
+.cal-legend .key .ic {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px;
+  font-size: 12px;
+  border-radius: 2px;
+}
+.cal-legend .key.lift-upper .ic { color: var(--accent); background: rgba(201, 123, 74, 0.12); }
+.cal-legend .key.lift-lower .ic { color: var(--accent); background: rgba(201, 123, 74, 0.12); }
+.cal-legend .key.soccer .ic { color: var(--soccer); background: rgba(125, 147, 119, 0.15); }
+.cal-legend .key.pro .ic { color: var(--warning); background: rgba(201, 161, 74, 0.12); }
+.cal-legend .key.match .ic { color: var(--band); background: rgba(157, 126, 175, 0.15); }
+.cal-legend .deload-mark {
+  width: 14px; height: 14px;
+  background: rgba(107, 138, 158, 0.15);
+  border: 1px dashed var(--mobility);
+  border-radius: 2px;
+}
+
+.cal-phase-row {
+  margin-bottom: 18px;
+}
+.cal-phase-header {
+  display: flex; align-items: baseline; gap: 14px;
+  padding: 8px 14px;
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent);
+  margin-bottom: 8px;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+.cal-phase-header.p1 { border-left-color: #9b8472; }
+.cal-phase-header.p2 { border-left-color: #b08658; }
+.cal-phase-header.p3 { border-left-color: #c97b4a; }
+.cal-phase-header.p4 { border-left-color: #7d9377; }
+.cal-phase-header.p5 { border-left-color: #6b8a9e; }
+.cal-phase-header strong {
+  color: var(--text-primary); font-weight: 600;
+  letter-spacing: 0.15em;
+}
+.cal-phase-header .dates {
+  margin-left: auto;
+  font-size: 10px; color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.cal-week {
+  display: grid;
+  grid-template-columns: 90px repeat(7, 1fr);
+  gap: 4px;
+  padding: 3px 0;
+}
+.cal-week-label {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.08em; color: var(--text-muted);
+  padding: 12px 12px 12px 14px;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  background: transparent;
+  text-transform: uppercase;
+}
+.cal-week-label .wnum { color: var(--text-secondary); font-weight: 600; }
+.cal-week-label .wdates { margin-top: 2px; font-size: 9px; opacity: 0.7; }
+.cal-week.deload .cal-week-label .wnum { color: var(--mobility); }
+
+.cal-day {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 8px 4px 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-height: 58px;
+  position: relative;
+  border-radius: 2px;
+}
+.cal-day:hover {
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+  transform: translateY(-1px);
+}
+.cal-day.selected {
+  border-color: var(--accent);
+  background: rgba(201, 123, 74, 0.10);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.cal-day.today::before {
+  content: '';
+  position: absolute;
+  top: 4px; right: 4px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent-bright);
+  box-shadow: 0 0 6px rgba(232, 145, 100, 0.6);
+}
+.cal-day .date {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1;
+  font-variation-settings: "opsz" 144;
+}
+.cal-day .day-letter {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+.cal-day .icon {
+  font-size: 14px;
+  line-height: 1;
+  margin-top: 3px;
+}
+.cal-day.lift-upper .icon { color: var(--accent); }
+.cal-day.lift-lower .icon { color: var(--accent); }
+.cal-day.soccer .icon { color: var(--soccer); }
+.cal-day.pro .icon { color: var(--warning); }
+.cal-day.match .icon { color: var(--band); }
+.cal-week.deload .cal-day {
+  background: rgba(107, 138, 158, 0.04);
+  border-color: rgba(107, 138, 158, 0.25);
+}
+.cal-day.out-of-range {
+  opacity: 0.25;
+  cursor: default;
+  pointer-events: none;
+}
+
+@media (max-width: 720px) {
+  #calendar { padding: 50px 0 40px; }
+  .cal-week {
+    grid-template-columns: 60px repeat(7, 1fr);
+    gap: 2px;
+  }
+  .cal-week-label { padding: 8px 6px; font-size: 9px; }
+  .cal-day { min-height: 50px; padding: 6px 2px; }
+  .cal-day .date { font-size: 13px; }
+  .cal-day .day-letter { font-size: 8px; }
+  .cal-day .icon { font-size: 11px; }
+}
+
+/* ============ DETAIL PANEL ============ */
+.cal-detail {
+  margin-top: 36px;
+  padding: 32px 36px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  display: none;
+  position: relative;
+  border-radius: 2px;
+}
+.cal-detail.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.cal-detail .close-btn {
+  position: absolute;
+  top: 18px; right: 22px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  width: 28px; height: 28px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.18s ease;
+  font-family: var(--mono);
+}
+.cal-detail .close-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.cal-detail .meta-row {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 12px;
+}
+.cal-detail h3 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  font-variation-settings: "opsz" 144;
+}
+.cal-detail h3 em {
+  font-style: italic; color: var(--accent); font-weight: 300;
+}
+.cal-detail .phase-line {
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.05em; color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+.cal-detail .phase-line .deload-tag {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 3px 9px;
+  background: rgba(107, 138, 158, 0.18);
+  color: var(--mobility);
+  border: 1px solid rgba(107, 138, 158, 0.4);
+  border-radius: 2px;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cal-detail .workout-card {
+  padding: 22px 26px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  margin-bottom: 22px;
+}
+.cal-detail .workout-card .name {
+  font-family: var(--serif);
+  font-size: 22px; font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.cal-detail .workout-card .duration {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--text-muted); letter-spacing: 0.05em;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.cal-detail .workout-card .focus {
+  font-size: 14px; line-height: 1.65;
+  color: var(--text-secondary);
+}
+.cal-detail .workout-card .focus strong {
+  color: var(--text-primary); font-weight: 600;
+}
+
+.cal-detail .schemes {
+  margin-top: 18px;
+  padding: 18px 22px;
+  background: var(--bg);
+  border: 1px solid var(--border-dim);
+  border-radius: 2px;
+}
+.cal-detail .schemes h5 {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 12px;
+  font-weight: 600;
+}
+.cal-detail .schemes .scheme-row {
+  display: grid;
+  grid-template-columns: 1fr 110px;
+  gap: 12px;
+  padding: 6px 0;
+  font-size: 13.5px;
+  border-bottom: 1px dashed var(--border-dim);
+  align-items: baseline;
+}
+.cal-detail .schemes .scheme-row:last-child { border-bottom: none; }
+.cal-detail .schemes .scheme-row .name { color: var(--text-secondary); }
+.cal-detail .schemes .scheme-row .name strong { color: var(--text-primary); font-weight: 500; }
+.cal-detail .schemes .scheme-row .reps {
+  font-family: var(--mono);
+  color: var(--accent);
+  text-align: right;
+  font-size: 12px;
+}
+
+.cal-detail .deload-callout {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: rgba(107, 138, 158, 0.06);
+  border-left: 2px solid var(--mobility);
+  font-size: 13.5px; line-height: 1.6;
+  color: var(--text-secondary);
+}
+.cal-detail .deload-callout strong { color: var(--text-primary); font-weight: 600; }
+
+.cal-detail .actions {
+  margin-top: 24px;
+  display: flex; gap: 10px;
+  flex-wrap: wrap;
+}
+.cal-detail .actions a {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 9px 16px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  border-radius: 2px;
+}
+.cal-detail .actions a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(201, 123, 74, 0.05);
+}
+
+@media (max-width: 600px) {
+  .cal-detail { padding: 24px 22px; }
+  .cal-detail .schemes .scheme-row { grid-template-columns: 1fr; gap: 2px; }
+  .cal-detail .schemes .scheme-row .reps { text-align: left; }
+}
+
+
+@media print {
+  body { background: white; color: #1a1a1a; }
+  nav.top { display: none; }
+  .day-block, .equip-card, .module-block, .session-block, .phase, .change-card {
+    background: #fafafa; color: #1a1a1a; border-color: #ddd;
+    page-break-inside: avoid;
+  }
+  .phase { page-break-after: always; }
+}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="inner">
+    <div class="brand">The Cut <span class="accent">/</span> v4</div>
+    <ul class="links">
+      <li><a href="#calendar">Calendar</a></li>
+      <li><a href="#profile">Profile</a></li>
+      <li><a href="#summary">Week</a></li>
+      <li><a href="#daily">Days</a></li>
+      <li><a href="#phases">Phases</a></li>
+      <li><a href="#mobility">Mobility</a></li>
+      <li><a href="#bands">Bands</a></li>
+      <li><a href="#plyo">Plyo</a></li>
+      <li><a href="#core">Core</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="meta">
+      PROGRAM · APR 27 → SEP 7, 2026
+      <span class="version">VERSION 04.3 — CALENDAR</span>
+    </div>
+    <h1>Soccer first.<br>Lifting <em>second</em>.<br>Lean third.</h1>
+    <p class="lede">A rebuild that reflects what you actually are: a competitive soccer player with a physique goal. Tuesdays and Thursdays become full solo sessions instead of warm-ups. Lifts compress to fit. The cut still hits its target — but soccer drives the bus now.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="label">Solo Soccer</div>
+        <div class="value">3<span class="small">days</span></div>
+      </div>
+      <div class="stat">
+        <div class="label">Lifting</div>
+        <div class="value">3<span class="small">days</span></div>
+      </div>
+      <div class="stat">
+        <div class="label">Pro + Match</div>
+        <div class="value">2<span class="small">days</span></div>
+      </div>
+      <div class="stat">
+        <div class="label">Soccer / Week</div>
+        <div class="value">~5<span class="small">hrs</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- INTERACTIVE CALENDAR -->
+<section id="calendar">
+  <div class="container">
+    <div class="cal-header">
+      <div class="meta">CALENDAR · TAP A DAY</div>
+      <h2>What am I doing<br><em>today</em>?</h2>
+      <p>The full 19-week schedule, mapped day by day. Tap any date to see exactly what's planned: workout type, duration, focus, and the phase-specific sets and reps. Today highlighted with an orange dot.</p>
+    </div>
+
+    <div class="cal-legend">
+      <div class="key lift-upper"><span class="ic">↑</span><span>Upper Lift</span></div>
+      <div class="key lift-lower"><span class="ic">↓</span><span>Lower Lift</span></div>
+      <div class="key soccer"><span class="ic">⚽</span><span>Soccer</span></div>
+      <div class="key pro"><span class="ic">★</span><span>Pro Session</span></div>
+      <div class="key match"><span class="ic">◉</span><span>Match Day</span></div>
+      <div class="key"><span class="deload-mark"></span><span>Deload Week</span></div>
+    </div>
+
+    <div id="cal-grid"></div>
+
+    <div id="cal-detail" class="cal-detail">
+      <button class="close-btn" onclick="closeCalDetail()" aria-label="Close">×</button>
+      <div id="cal-detail-content"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLAYER PROFILE -->
+<section id="profile">
+  <div class="container">
+    <div class="section-meta">00 — Player Profile</div>
+    <h2 class="section-title">Two-footed inverted right back<br><em>who plays left wing</em>.</h2>
+    <p class="section-intro">The soccer drills are built around this profile. Tuesday targets receiving on the half-turn, switches of play, 1v1 attacking from wide, and position-specific finishing. Thursday targets transition: defensive recovery, 1v1 defending, repeat sprints, and technical work under fatigue. Friday biases finishing toward the patterns you actually use.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px;">
+
+      <div style="background: var(--bg-card); border: 1px solid var(--border); padding: 22px 24px; border-left: 3px solid #9ab093;">
+        <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #9ab093; margin-bottom: 10px;">PRIMARY · IRB</div>
+        <h4 style="font-family: var(--serif); font-size: 18px; font-weight: 500; margin-bottom: 10px; letter-spacing: -0.01em;">Inverted Right Back</h4>
+        <p style="font-size: 13px; line-height: 1.55; color: var(--text-secondary); margin: 0;">Tucks into midfield in possession. Receives on the half-turn under pressure. Hits diagonal switches to the left winger. Recovers wide on transitions. Selectively overlaps when triggered.</p>
+        <div style="margin-top: 14px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; color: var(--text-muted); line-height: 1.6;">KEY ACTIONS · half-turn receive · diagonal switch · line-breaking pass · recovery sprint · jockey-and-force</div>
+      </div>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--border); padding: 22px 24px; border-left: 3px solid #b89cc7;">
+        <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #b89cc7; margin-bottom: 10px;">SECONDARY · LW</div>
+        <h4 style="font-family: var(--serif); font-size: 18px; font-weight: 500; margin-bottom: 10px; letter-spacing: -0.01em;">Left Winger</h4>
+        <p style="font-size: 13px; line-height: 1.55; color: var(--text-secondary); margin: 0;">Receives wide. Cuts inside on the right foot for curlers from the half-space. Beats the fullback outside on the left foot when defenders show inside. Underlap to back post. First line of pressure.</p>
+        <div style="margin-top: 14px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; color: var(--text-muted); line-height: 1.6;">KEY ACTIONS · cut-inside curl · outside burst · back-post arrival · 1v1 attacking · high press chase</div>
+      </div>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--border); padding: 22px 24px; border-left: 3px solid #d6b376;">
+        <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #d6b376; margin-bottom: 10px;">EDGE · TWO-FOOTED</div>
+        <h4 style="font-family: var(--serif); font-size: 18px; font-weight: 500; margin-bottom: 10px; letter-spacing: -0.01em;">Genuinely Two-Footed</h4>
+        <p style="font-size: 13px; line-height: 1.55; color: var(--text-secondary); margin: 0;">Both feet are match-quality. This is rare and high-value: switches in either direction, free kicks from either side, unpredictable in 1v1, and positional flexibility (could play LB inverted just as easily). Drills protect both feet — never let one drift to "second."</p>
+        <div style="margin-top: 14px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; color: var(--text-muted); line-height: 1.6;">PRIORITY · maintain match-level on both feet · don't let one become "the weak foot"</div>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 28px; padding: 18px 22px; background: rgba(125, 147, 119, 0.06); border-left: 3px solid var(--accent); font-size: 14px; line-height: 1.65; color: var(--text-secondary);">
+      <strong style="color: var(--text-primary);">How drills are tagged.</strong> Every soccer drill on Tuesday, Thursday, and Friday is labeled with which position it serves: <span style="display: inline-block; font-family: var(--mono); font-size: 9px; padding: 2px 6px; background: rgba(125, 147, 119, 0.15); color: #9ab093; border: 1px solid rgba(125, 147, 119, 0.35); border-radius: 2px; font-weight: 600; letter-spacing: 0.08em;">IRB</span>, <span style="display: inline-block; font-family: var(--mono); font-size: 9px; padding: 2px 6px; background: rgba(157, 126, 175, 0.15); color: #b89cc7; border: 1px solid rgba(157, 126, 175, 0.35); border-radius: 2px; font-weight: 600; letter-spacing: 0.08em;">LW</span>, or <span style="display: inline-block; font-family: var(--mono); font-size: 9px; padding: 2px 6px; background: rgba(201, 161, 74, 0.12); color: #d6b376; border: 1px solid rgba(201, 161, 74, 0.32); border-radius: 2px; font-weight: 600; letter-spacing: 0.08em;">BOTH</span>. Most drills include a brief italicized note explaining <em>why</em> the drill matters for that role. If you're rotating to a different position week-to-week, weight the drills accordingly: heavy on the position you're starting in this Sunday.
+    </div>
+  </div>
+</section>
+
+<!-- WEEK AT A GLANCE -->
+<section id="summary">
+  <div class="container">
+    <div class="section-meta">01 — Week at a glance</div>
+    <h2 class="section-title">The shape of<br><em>seven days</em>.</h2>
+    <p class="section-intro">High-altitude view before the day-by-day detail. Print this. Stick it on the fridge.</p>
+
+    <div class="week-summary">
+      <div class="head">Day</div>
+      <div class="head">Primary Work</div>
+      <div class="head">Secondary</div>
+      <div class="head">Total Time</div>
+
+      <div class="day-cell">Mon</div>
+      <div class="focus"><strong>Upper Push lift</strong> — bench, OHP, shoulders, tris</div>
+      <div class="focus">Light touches warm-up · 10 min</div>
+      <div class="duration">60–70 min</div>
+
+      <div class="day-cell soccer">Tue</div>
+      <div class="focus"><strong>Soccer — Technical + Finishing</strong></div>
+      <div class="focus">Mobility (opt) · band glute work (opt)</div>
+      <div class="duration">60–80 min</div>
+
+      <div class="day-cell">Wed</div>
+      <div class="focus"><strong>Lower lift</strong> — squat, BSS, RDL, calf, core</div>
+      <div class="focus">Light touches warm-up · 10 min</div>
+      <div class="duration">65–80 min</div>
+
+      <div class="day-cell soccer">Thu</div>
+      <div class="focus"><strong>Soccer — Speed-Endurance + Skill</strong></div>
+      <div class="focus">Plyo (opt, P3+) · cool-down stretch</div>
+      <div class="duration">60–75 min</div>
+
+      <div class="day-cell">Fri</div>
+      <div class="focus"><strong>Upper Pull lift + Light Soccer</strong></div>
+      <div class="focus">Finishing · free kicks · strides</div>
+      <div class="duration">60–75 min</div>
+
+      <div class="day-cell pro">Sat</div>
+      <div class="focus"><strong>1-on-1 Pro Session</strong></div>
+      <div class="focus">Pro-led · eat at maintenance</div>
+      <div class="duration">60–90 min</div>
+
+      <div class="day-cell match">Sun</div>
+      <div class="focus"><strong>Match Day</strong> — full performance</div>
+      <div class="focus">No training · refuel · sleep</div>
+      <div class="duration">90+ min</div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPMENT -->
+<section>
+  <div class="container">
+    <div class="section-meta">02 — Equipment</div>
+    <h2 class="section-title">The kit.<br><em>Same as v2</em>.</h2>
+    <p class="section-intro">Equipment requirements haven't changed — the rebuild is structural, not material. Soccer gear, gym essentials, optional add-ons. Required modules in green; optional in muted blue.</p>
+
+    <div class="module-legend">
+      <div class="key"><span class="swatch soccer"></span><span>Soccer · Required</span></div>
+      <div class="key"><span class="swatch core"></span><span>Core Lift · Required</span></div>
+      <div class="key"><span class="swatch mobility"></span><span>Mobility · Optional</span></div>
+      <div class="key"><span class="swatch band"></span><span>Bands · Optional</span></div>
+      <div class="key"><span class="swatch plyo"></span><span>Plyometrics · Optional</span></div>
+      <div class="key"><span class="swatch coretrain"></span><span>Core Training · Optional</span></div>
+    </div>
+
+    <div class="equip-grid">
+      <div class="equip-card">
+        <h4>Soccer Kit</h4>
+        <div class="essential">REQUIRED · NOW PRIMARY</div>
+        <ul>
+          <li>Match ball + 2-3 spares</li>
+          <li>10-12 cones (any size, any color)</li>
+          <li>Agility ladder</li>
+          <li>4-6 disc markers / poles</li>
+          <li>Wall or rebound board</li>
+          <li>Open grass space (~30×30 yd minimum)</li>
+          <li>Cleats + turf shoes</li>
+          <li>Stopwatch / timer</li>
+          <li>Goal or target (Tue/Thu finishing)</li>
+        </ul>
+      </div>
+
+      <div class="equip-card">
+        <h4>Gym Essentials</h4>
+        <div class="essential">REQUIRED FOR LIFTS</div>
+        <ul>
+          <li>Olympic barbell + plates</li>
+          <li>Squat rack with safeties</li>
+          <li>Adjustable bench (flat / incline)</li>
+          <li>Dumbbells — full range up to ~70 lbs</li>
+          <li>Pull-up bar</li>
+          <li>Cable stack (pushdown, face pull)</li>
+          <li>Leg curl machine</li>
+          <li>Dipping belt (Phase 3 weighted pull-ups)</li>
+        </ul>
+      </div>
+
+      <div class="equip-card optional">
+        <h4>Optional Add-ons</h4>
+        <div class="essential">OPTIONAL MODULES</div>
+        <ul>
+          <li>Resistance bands — light, medium, heavy</li>
+          <li>Mini bands (glute / hip work)</li>
+          <li>Foam roller + lacrosse ball</li>
+          <li>Plyo box — 18" or 24"</li>
+          <li>Hurdles — 4-6 (or use cones)</li>
+          <li>Yoga mat</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAILY STRUCTURE -->
+<section id="daily">
+  <div class="container">
+    <div class="section-meta">03 — Daily Structure</div>
+    <h2 class="section-title">Day by day,<br><em>fully laid out</em>.</h2>
+    <p class="section-intro">Every day in sequence. Soccer sessions on Tue and Thu are broken into structured blocks — warm-up, technical, main work, cool-down — like proper training, not freelance touches. Lift days stay compact.</p>
+
+    <div style="background: var(--bg-card); border: 1px solid var(--border); padding: 18px 24px; margin-bottom: 32px; display: flex; gap: 24px; flex-wrap: wrap; align-items: center; font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em;">
+      <span style="color: var(--accent); font-weight: 600; letter-spacing: 0.15em;">PHASE LEGEND</span>
+      <span style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">P1</strong> Adapt · W1–4</span>
+      <span style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">P2</strong> Build · W5–8</span>
+      <span style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">P3</strong> Peak · W9–12</span>
+      <span style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">P4</strong> Hold · W13–16</span>
+      <span style="color: var(--text-secondary);"><strong style="color: var(--text-primary);">P5</strong> Taper · W17–19</span>
+    </div>
+
+    <div class="collapse-controls" data-section="daily">
+      <div class="label-side">Daily Structure · 7 days</div>
+      <div class="btns">
+        <button onclick="setAllDays('daily', false)" class="active">Expand All</button>
+        <button onclick="setAllDays('daily', true)">Collapse All</button>
+      </div>
+    </div>
+
+    <!-- MONDAY — UPPER PUSH -->
+    <div class="day-block">
+      <div class="day-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>1</strong>Day</div><div class="day-label"><div class="d">Mon</div><div class="date">Apr 27</div></div><div class="day-name">Upper Push <span style="color: var(--text-muted); font-weight: 300;">+ Light Touches</span></div><div class="duration">60–70 MIN · LOW LOWER DEMAND</div><div class="chevron"></div></div>
+      <div class="day-body">
+
+      <div class="day-section mobility">
+        <div class="label">Mobility Warm-up <span class="opt">opt</span> · 8 min</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">Cat-cow + thoracic rotations<span class="detail">spinal mobility</span></span><span class="equip">bodyweight</span><span class="scheme">10 reps</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">Banded shoulder dislocates<span class="detail">opens chest</span></span><span class="equip">light band</span><span class="scheme">2 × 10</span></div>
+          <div class="exercise-row"><span class="num">03</span><span class="name">Wall slides<span class="detail">scap activation</span></span><span class="equip">bodyweight</span><span class="scheme">2 × 10</span></div>
+        </div>
+      </div>
+
+      <div class="day-section coretrain">
+        <div class="label">Daily Core Activation <span class="opt">opt</span> · 3 min</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">Dead Bug<span class="detail">slow tempo, lower back glued</span></span><span class="equip">bodyweight</span><span class="scheme">2 × 8/side</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">Bird Dog<span class="detail">2 sec hold at extension</span></span><span class="equip">bodyweight</span><span class="scheme">2 × 8/side</span></div>
+          <div class="exercise-row"><span class="num">03</span><span class="name">Hollow Hold<span class="detail">low back flat, legs 6&quot; up</span></span><span class="equip">bodyweight</span><span class="scheme">2 × 20s</span></div>
+        </div>
+      </div>
+
+      <div class="day-section soccer">
+        <div class="label">Light Touches <span class="req">req</span> · 10 min</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">Foundations + sole rolls<span class="detail">active recovery for calves</span></span><span class="equip">ball</span><span class="scheme">3 × 60s</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">Wall pass — two touch<span class="detail">both feet equal volume</span></span><span class="equip">ball + wall</span><span class="scheme">5 min</span></div>
+          <div class="exercise-row"><span class="num">03</span><span class="name">Juggling<span class="detail">no goal — keep it loose</span></span><span class="equip">ball</span><span class="scheme">remaining</span></div>
+        </div>
+      </div>
+
+      <div class="day-section core">
+        <div class="label">Upper Push Lift <span class="req">req</span> · 45–50 min</div>
+        <div class="exercise-list">
+          <div class="exercise-row has-phases"><span class="num">01</span><span class="name">Bench Press<span class="detail">primary horizontal push</span></span><span class="equip">barbell + bench</span><div class="scheme-grid"><div class="pp"><span class="ph">P1</span><span class="pv">4×6</span></div><div class="pp"><span class="ph">P2</span><span class="pv">4×5</span></div><div class="pp"><span class="ph">P3</span><span class="pv">5×3</span></div><div class="pp"><span class="ph">P4</span><span class="pv">3×6</span></div><div class="pp"><span class="ph">P5</span><span class="pv">3×6</span></div></div></div>
+          <div class="exercise-row has-phases"><span class="num">02</span><span class="name">Seated DB Shoulder Press <em style="color:var(--text-muted)">/ OHP in P3</em><span class="detail">vertical push</span></span><span class="equip">DBs / barbell</span><div class="scheme-grid"><div class="pp"><span class="ph">P1</span><span class="pv">3×8</span></div><div class="pp"><span class="ph">P2</span><span class="pv">4×8</span></div><div class="pp"><span class="ph">P3</span><span class="pv">4×6 OHP</span></div><div class="pp"><span class="ph">P4</span><span class="pv">3×8</span></div><div class="pp"><span class="ph">P5</span><span class="pv">3×8</span></div></div></div>
+          <div class="exercise-row has-phases"><span class="num">03</span><span class="name">Incline DB Press<span class="detail">upper chest emphasis</span></span><span class="equip">DBs + incline bench</span><div class="scheme-grid"><div class="pp"><span class="ph">P1</span><span class="pv">3×10</span></div><div class="pp"><span class="ph">P2</span><span class="pv">4×10</span></div><div class="pp"><span class="ph">P3</span><span class="pv">4×8</span></div><div class="pp"><span class="ph">P4</span><span class="pv">3×10</span></div><div class="pp"><span class="ph">P5</span><span class="pv">3×10</span></div></div></div>
+          <div class="exercise-row has-phases"><span class="num">04</span><span class="name">Lateral Raise<span class="detail">side delts</span></span><span class="equip">DBs (light)</span><div class="scheme-grid"><div class="pp"><span class="ph">P1</span><span class="pv">3×12</span></div><div class="pp"><span class="ph">P2</span><span class="pv">4×12</span></div><div class="pp"><span class="ph">P3</span><span class="pv">4×15</span></div><div class="pp"><span class="ph">P4</span><span class="pv">3×12</span></div><div class="pp"><span class="ph">P5</span><span class="pv">3×12</span></div></div></div>
+          <div class="exercise-row has-phases"><span class="num">05</span><span class="name">Tricep Pushdown<span class="detail">cable preferred</span></span><span class="equip">cable + rope</span><div class="scheme-grid"><div class="pp"><span class="ph">P1</span><span class="pv">3×12</span></div><div class="pp"><span class="ph">P2</span><span class="pv">4×12</span></div><div class="pp"><span class="ph">P3</span><span class="pv">4×15</span></div><div class="pp"><span class="ph">P4</span><span class="pv">3×12</span></div><div class="pp"><span class="ph">P5</span><span class="pv">3×12</span></div></div></div>
+          <div class="exercise-row"><span class="num">06</span><span class="name">Rear Delt Fly<span class="detail">added — only push-day pull volume</span></span><span class="equip">DBs or cable</span><span class="scheme">3 × 12</span></div>
+        </div>
+      </div>
+
+      <div class="day-section band">
+        <div class="label">Band Finisher <span class="opt">opt</span> · 5 min</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">Band Pull-Apart<span class="detail">posterior delt + scap</span></span><span class="equip">light/med band</span><span class="scheme">3 × 20</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">Band Tricep Pushdown<span class="detail">drop-set finisher</span></span><span class="equip">band + anchor</span><span class="scheme">2 × 25</span></div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- TUESDAY — SOCCER SESSION -->
+    <div class="day-block soccer-day">
+      <div class="day-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>2</strong>Day</div><div class="day-label"><div class="d">Tue</div><div class="date">Apr 28</div></div><div class="day-name">Soccer <span style="color: var(--text-muted); font-weight: 300;">— Wide Areas + Receiving</span></div><div class="duration">60–80 MIN · NO LIFT</div><div class="chevron"></div></div>
+      <div class="day-body">
+
+      <div class="day-section mobility">
+        <div class="label">Mobility Warm-up <span class="opt">opt</span> · 8 min</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">90/90 hip switches</span><span class="equip">bodyweight</span><span class="scheme">10/side</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">World's Greatest Stretch</span><span class="equip">bodyweight</span><span class="scheme">5/side</span></div>
+          <div class="exercise-row"><span class="num">03</span><span class="name">Adductor rock-back</span><span class="equip">bodyweight</span><span class="scheme">8/side</span></div>
+        </div>
+      </div>
+
+      <div class="day-section band">
+        <div class="label">Glute Activation <span class="opt">opt</span> · 5 min</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">Mini-band lateral walks</span><span class="equip">mini band</span><span class="scheme">2 × 10/side</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">Banded clamshells<span class="detail">15R / 12L — right hip emphasis</span></span><span class="equip">mini band</span><span class="scheme">15R / 12L</span></div>
+        </div>
+      </div>
+
+      <div class="day-section soccer">
+        <div class="label">Soccer Session — Wide Areas + Receiving <span class="req">req</span> · 60–75 min</div>
+
+        <div class="position-legend">
+          <span class="pl-label">Drill Focus</span>
+          <span class="pl-key"><span class="pos irb">IRB</span> Inverted Right Back</span>
+          <span class="pl-key"><span class="pos lw">LW</span> Left Winger</span>
+          <span class="pl-key"><span class="pos both">BOTH</span> Both positions</span>
+        </div>
+
+        <div class="session-block">
+          <div class="block-head">
+            <span class="block-num">BLOCK 01</span>
+            <span class="block-title">Activation + First Touches</span>
+            <span class="block-time">10 MIN</span>
+          </div>
+          <div class="drill-line"><div class="name"><strong>Light jog with ball</strong> · vary touches every 5 yards · both feet equal time<span class="pos-tags"><span class="pos both">BOTH</span></span><span class="why">Wakes up the touch on both feet — your two-footedness is your edge, maintain it daily.</span></div><div class="scheme">3 min</div></div>
+          <div class="drill-line"><div class="name"><strong>Leg swings + lateral lunges</strong> · open hips for the cuts ahead<span class="pos-tags"><span class="pos both">BOTH</span></span></div><div class="scheme">2 min</div></div>
+          <div class="drill-line"><div class="name"><strong>Toe-tap + V-cuts</strong> · close-control activation, both feet alternate<span class="pos-tags"><span class="pos both">BOTH</span></span></div><div class="scheme">3 × 30s</div></div>
+          <div class="drill-line"><div class="name"><strong>A-skips → B-skips</strong> · 20 yards each<span class="pos-tags"><span class="pos both">BOTH</span></span></div><div class="scheme">2 × 20 yds</div></div>
+        </div>
+
+        <div class="session-block">
+          <div class="block-head">
+            <span class="block-num">BLOCK 02</span>
+            <span class="block-title">Receiving on the Half-Turn</span>
+            <span class="block-time">15 MIN</span>
+          </div>
+          <div class="drill-line"><div class="name"><strong>Open-body wall pass</strong> · receive with back foot, body opens 90°, return-pass with the same foot · 5 min each foot<span class="pos-tags"><span class="pos irb">IRB</span></span><span class="why">The single most important IRB skill — receiving in midfield with body already turned forward. If you can't do this under pressure, you can't play inverted.</span></div><div class="scheme">10 min</div></div>
+          <div class="drill-line"><div class="name"><strong>Shoulder-check receive</strong> · before every touch, glance over shoulder, then receive · build it as a habit · use both feet<span class="pos-tags"><span class="pos both">BOTH</span></span><span class="why">Inverted RBs and wingers both need to know what's behind them BEFORE the ball arrives. Habit first, skill second.</span></div><div class="scheme">3 min</div></div>
+          <div class="drill-line"><div class="name"><strong>Aerial control to set</strong> · throw ball up, control with chest/thigh, set up to switch with opposite foot<span class="pos-tags"><span class="pos irb">IRB</span></span></div><div class="scheme">2 min</div></div>
+        </div>
+
+        <div class="session-block">
+          <div class="block-head">
+            <span class="block-num">BLOCK 03</span>
+            <span class="block-title">Switches + Line-Breaking Passes</span>
+            <span class="block-time">12 MIN</span>
+          </div>
+          <div class="drill-line"><div class="name"><strong>Diagonal switch — right foot</strong> · 30-40 yard ball from right half-space to imagined LW · weight transfer through laces<span class="pos-tags"><span class="pos irb">IRB</span></span><span class="why">Trent's signature pass. As an inverted RB, switching from the right channel to the left winger is a high-value action you'll do 10+ times a match.</span></div><div class="scheme">8 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>Diagonal switch — left foot</strong> · same drill, opposite direction · simulate inverted LB role too<span class="pos-tags"><span class="pos both">BOTH</span></span><span class="why">Two-footed switches make you positionally flexible — you can play either inverted fullback role.</span></div><div class="scheme">8 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>Line-breaking through ball</strong> · driven low pass between two cones (defenders) · 20 yards · both feet<span class="pos-tags"><span class="pos irb">IRB</span></span></div><div class="scheme">10 reps</div></div>
+        </div>
+
+        <div class="session-block">
+          <div class="block-head">
+            <span class="block-num">BLOCK 04</span>
+            <span class="block-title">1v1 Attacking from Wide</span>
+            <span class="block-time">12 MIN</span>
+          </div>
+          <div class="drill-line"><div class="name"><strong>Cut-inside on right foot</strong> · LW position, defender (cone) on outside, chop inside, accelerate · the Salah / Mbappé pattern<span class="pos-tags"><span class="pos lw">LW</span></span><span class="why">Your bread and butter as a left winger. Eight reps before progressing — you want this automatic.</span></div><div class="scheme">8 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>Beat outside on left foot</strong> · LW position, defender shows you inside, push down the line on left · uses your LEFT as a weapon<span class="pos-tags"><span class="pos lw">LW</span></span><span class="why">Most "inverted" wingers can't do this — defenders force them inside because they're predictable. Two-footed gives you the option.</span></div><div class="scheme">8 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>Overlap + cross — RB lane</strong> · simulate getting forward as traditional RB, deliver cross on right foot<span class="pos-tags"><span class="pos irb">IRB</span></span><span class="why">Even as inverted RB, you'll have moments when you bomb forward. Don't lose this.</span></div><div class="scheme">6 reps</div></div>
+        </div>
+
+        <div class="session-block">
+          <div class="block-head">
+            <span class="block-num">BLOCK 05</span>
+            <span class="block-title">Finishing — Position-Specific</span>
+            <span class="block-time">10–15 MIN</span>
+          </div>
+          <div class="drill-line"><div class="name"><strong>Curling shot — left half-space</strong> · receive at 22 yds, take 1 touch inside, curl with right foot to far post<span class="pos-tags"><span class="pos lw">LW</span></span><span class="why">The exact shot Salah lives off. Top-bin or far post, both work — what matters is the shape and the consistency.</span></div><div class="scheme">10 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>Driven low strike — right half-space</strong> · LB position, take a touch forward, drive a low ball across goal<span class="pos-tags"><span class="pos lw">LW</span></span></div><div class="scheme">5 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>Long-range strike — both feet</strong> · 25-yard strikes, simulate IRB stepping into space and striking · 5 each foot<span class="pos-tags"><span class="pos irb">IRB</span></span><span class="why">Inverted fullbacks find space at the edge of the box during sustained possession. Reward the position with goals.</span></div><div class="scheme">10 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>1-touch finish off cross</strong> · self-cross from right wing (right foot), sprint, finish first-time on left foot<span class="pos-tags"><span class="pos both">BOTH</span></span><span class="why">As LW, this is the back-post finish off the cutback. As RB, this is the run you make on overlap.</span></div><div class="scheme">8 reps</div></div>
+        </div>
+
+        <div class="session-block">
+          <div class="block-head">
+            <span class="block-num">BLOCK 06</span>
+            <span class="block-title">Cool-down</span>
+            <span class="block-time">5 MIN</span>
+          </div>
+          <div class="drill-line"><div class="name"><strong>Light juggling</strong> · bring HR down, restore touch<span class="pos-tags"><span class="pos both">BOTH</span></span></div><div class="scheme">2 min</div></div>
+          <div class="drill-line"><div class="name"><strong>Static stretch</strong> · hamstrings, calves, hip flexors, adductors<span class="pos-tags"><span class="pos both">BOTH</span></span></div><div class="scheme">3 min</div></div>
+        </div>
+      </div>
+
+      <div class="day-section coretrain">
+        <div class="label">Rotational Power Core <span class="opt">opt</span> · 8 min · post-soccer</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">Med Ball Rotational Throw<span class="detail">against wall, full hip drive · both directions equal</span></span><span class="equip">med ball + wall</span><span class="scheme">3 × 6/side</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">Cable Wood Chop — High to Low<span class="detail">simulates striking the ball</span></span><span class="equip">cable</span><span class="scheme">3 × 10/side</span></div>
+          <div class="exercise-row"><span class="num">03</span><span class="name">Cable Wood Chop — Low to High<span class="detail">simulates whipping a cross</span></span><span class="equip">cable</span><span class="scheme">3 × 10/side</span></div>
+          <div class="exercise-row"><span class="num">04</span><span class="name">Russian Twist with Med Ball<span class="detail">controlled tempo, NOT speed reps</span></span><span class="equip">med ball</span><span class="scheme">3 × 12/side</span></div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- WEDNESDAY — LOWER LIFT -->
+    <div class="day-block">
+      <div class="day-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>3</strong>Day</div><div class="day-label"><div class="d">Wed</div><div class="date">Apr 29</div></div><div class="day-name">Lower Lift <span style="color: var(--text-muted); font-weight: 300;">— Heavy + Accessories</span></div><div class="duration">65–80 MIN · ONLY LOWER DAY</div><div class="chevron"></div></div>
+      <div class="day-body">
+
+      <div class="day-section mobility">
+        <div class="label">Mobility Warm-up <span class="opt">opt</span> · 10 min</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">90/90 hip switches</span><span class="equip">bodyweight</span><span class="scheme">10/side</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">World's Greatest Stretch</span><span class="equip">bodyweight</span><span class="scheme">5/side</span></div>
+          <div class="exercise-row"><span class="num">03</span><span class="name">Couch stretch</span><span class="equip">wall/couch</span><span class="scheme">60s/side</span></div>
+          <div class="exercise-row"><span class="num">04</span><span class="name">Ankle wall test</span><span class="equip">wall</span><span class="scheme">10/side</span></div>
+        </div>
+      </div>
+
+      <div class="day-section soccer">
+        <div class="label">Light Touches <span class="req">req</span> · 8–10 min</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">Sole rolls + toe taps<span class="detail">primes calves and ankles for the squat</span></span><span class="equip">ball</span><span class="scheme">3 × 30s</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">First-touch receive + turn<span class="detail">low intensity, both feet</span></span><span class="equip">ball + wall</span><span class="scheme">6 min</span></div>
+        </div>
+      </div>
+
+      <div class="day-section band">
+        <div class="label">Glute Activation <span class="opt">opt</span> · 5 min</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">Mini-band lateral walks</span><span class="equip">mini band</span><span class="scheme">2 × 10/side</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">Mini-band monster walks</span><span class="equip">mini band</span><span class="scheme">2 × 10 each</span></div>
+          <div class="exercise-row"><span class="num">03</span><span class="name">Banded clamshells</span><span class="equip">mini band</span><span class="scheme">15R / 12L</span></div>
+        </div>
+      </div>
+
+      <div class="day-section core">
+        <div class="label">Lower Lift <span class="req">req</span> · 50–60 min</div>
+        <div class="exercise-list">
+          <div class="exercise-row has-phases"><span class="num">01</span><span class="name">Back Squat <em style="color:var(--text-muted)">or Trap Bar DL (alternate weeks)</em><span class="detail">primary lower compound</span></span><span class="equip">barbell + rack</span><div class="scheme-grid"><div class="pp"><span class="ph">P1</span><span class="pv">4×5</span></div><div class="pp"><span class="ph">P2</span><span class="pv">4×5</span></div><div class="pp"><span class="ph">P3</span><span class="pv">5×3</span></div><div class="pp"><span class="ph">P4</span><span class="pv">3×5</span></div><div class="pp"><span class="ph">P5</span><span class="pv">3×5</span></div></div></div>
+          <div class="exercise-row has-phases"><span class="num">02</span><span class="name">Bulgarian Split Squat<span class="detail">RIGHT LEG LEADS · matches volume</span></span><span class="equip">DBs + bench</span><div class="scheme-grid"><div class="pp"><span class="ph">P1</span><span class="pv">3×8/leg</span></div><div class="pp"><span class="ph">P2</span><span class="pv">4×8/leg</span></div><div class="pp"><span class="ph">P3</span><span class="pv">4×6/leg</span></div><div class="pp"><span class="ph">P4</span><span class="pv">3×8/leg</span></div><div class="pp"><span class="ph">P5</span><span class="pv">3×6/leg</span></div></div></div>
+          <div class="exercise-row has-phases"><span class="num">03</span><span class="name">Romanian Deadlift<span class="detail">posterior chain</span></span><span class="equip">barbell or DBs</span><div class="scheme-grid"><div class="pp"><span class="ph">P1</span><span class="pv">3×8</span></div><div class="pp"><span class="ph">P2</span><span class="pv">4×8</span></div><div class="pp"><span class="ph">P3</span><span class="pv">4×6</span></div><div class="pp"><span class="ph">P4</span><span class="pv">3×8</span></div><div class="pp"><span class="ph">P5</span><span class="pv">3×6</span></div></div></div>
+          <div class="exercise-row has-phases"><span class="num">04</span><span class="name">Lying Leg Curl<span class="detail">hamstring isolation</span></span><span class="equip">leg curl machine</span><div class="scheme-grid"><div class="pp"><span class="ph">P1</span><span class="pv">3×12</span></div><div class="pp"><span class="ph">P2</span><span class="pv">4×12</span></div><div class="pp"><span class="ph">P3</span><span class="pv">4×12</span></div><div class="pp"><span class="ph">P4</span><span class="pv">3×12</span></div><div class="pp"><span class="ph">P5</span><span class="pv">3×12</span></div></div></div>
+          <div class="exercise-row has-phases"><span class="num">05</span><span class="name">Single-Leg Calf Raise<span class="detail">extra reps right side</span></span><span class="equip">step or calf machine</span><div class="scheme-grid"><div class="pp"><span class="ph">P1</span><span class="pv">3×12</span></div><div class="pp"><span class="ph">P2</span><span class="pv">4×12</span></div><div class="pp"><span class="ph">P3</span><span class="pv">4×10</span></div><div class="pp"><span class="ph">P4</span><span class="pv">3×12</span></div><div class="pp"><span class="ph">P5</span><span class="pv">3×12</span></div></div></div>
+          <div class="exercise-row has-phases"><span class="num">06</span><span class="name">Hanging Leg Raise / Plank / Woodchop<span class="detail">core — varies by phase</span></span><span class="equip">pull-up bar / cable</span><div class="scheme-grid"><div class="pp"><span class="ph">P1</span><span class="pv">LR 3×10</span></div><div class="pp"><span class="ph">P2</span><span class="pv">Plank 3×45s</span></div><div class="pp"><span class="ph">P3</span><span class="pv">Chop 3×10/s</span></div><div class="pp"><span class="ph">P4</span><span class="pv">LR 3×10</span></div><div class="pp skip"><span class="ph">P5</span><span class="pv">—</span></div></div></div>
+        </div>
+      </div>
+
+      <div class="day-section coretrain">
+        <div class="label">Anti-Rotation + Anti-Extension Core <span class="opt">opt</span> · 10 min · post-lift</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">Pallof Press<span class="detail">brace against rotation, slow</span></span><span class="equip">cable or band</span><span class="scheme">3 × 10/side</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">Half-Kneeling Pallof Hold<span class="detail">isometric, knee on band-side leg</span></span><span class="equip">cable or band</span><span class="scheme">3 × 20s/side</span></div>
+          <div class="exercise-row"><span class="num">03</span><span class="name">Suitcase Carry<span class="detail">heavy DB one hand, do NOT lean</span></span><span class="equip">DB</span><span class="scheme">3 × 30 yds/side</span></div>
+          <div class="exercise-row"><span class="num">04</span><span class="name">Ab Wheel Rollout<span class="detail">from knees · ribs tucked · no lumbar extension</span></span><span class="equip">ab wheel or barbell</span><span class="scheme">3 × 8</span></div>
+          <div class="exercise-row"><span class="num">05</span><span class="name">Hanging Knee Raise<span class="detail">slow, no swing, post-tilt at top</span></span><span class="equip">pull-up bar</span><span class="scheme">3 × 10</span></div>
+        </div>
+      </div>
+
+      <div class="day-section plyo">
+        <div class="label">Plyometric Finisher <span class="opt">opt</span> · 8 min · Phase 2+</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">Box Jumps<span class="detail">step DOWN, never jump down</span></span><span class="equip">18-24" box</span><span class="scheme">4 × 4</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">Single-Leg Pogo<span class="detail">stiff ankle, low amplitude</span></span><span class="equip">bodyweight</span><span class="scheme">3 × 15/side</span></div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- THURSDAY — SOCCER CONDITIONING + SKILL -->
+    <div class="day-block soccer-day">
+      <div class="day-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>4</strong>Day</div><div class="day-label"><div class="d">Thu</div><div class="date">Apr 30</div></div><div class="day-name">Soccer <span style="color: var(--text-muted); font-weight: 300;">— Transition + Defending</span></div><div class="duration">60–75 MIN · NO LIFT</div><div class="chevron"></div></div>
+      <div class="day-body">
+
+      <div class="day-section mobility">
+        <div class="label">Dynamic Warm-up <span class="opt">opt</span> · 8 min</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">Leg swings (front/back, side/side)</span><span class="equip">bodyweight</span><span class="scheme">15 each</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">Walking knee hugs + quad pulls</span><span class="equip">bodyweight</span><span class="scheme">2 × 10 yds</span></div>
+          <div class="exercise-row"><span class="num">03</span><span class="name">Build-up strides</span><span class="equip">grass</span><span class="scheme">4 × 30 yds</span></div>
+        </div>
+      </div>
+
+      <div class="day-section coretrain">
+        <div class="label">Daily Core Activation <span class="opt">opt</span> · 3 min</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">Dead Bug<span class="detail">slow tempo, lower back glued</span></span><span class="equip">bodyweight</span><span class="scheme">2 × 8/side</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">Bird Dog<span class="detail">2 sec hold at extension</span></span><span class="equip">bodyweight</span><span class="scheme">2 × 8/side</span></div>
+          <div class="exercise-row"><span class="num">03</span><span class="name">Hollow Hold<span class="detail">low back flat, legs 6&quot; up</span></span><span class="equip">bodyweight</span><span class="scheme">2 × 20s</span></div>
+        </div>
+      </div>
+
+      <div class="day-section soccer">
+        <div class="label">Soccer Session — Transition + Defending <span class="req">req</span> · 55–65 min</div>
+
+        <div class="position-legend">
+          <span class="pl-label">Drill Focus</span>
+          <span class="pl-key"><span class="pos irb">IRB</span> Inverted Right Back</span>
+          <span class="pl-key"><span class="pos lw">LW</span> Left Winger</span>
+          <span class="pl-key"><span class="pos both">BOTH</span> Both positions</span>
+        </div>
+
+        <div class="session-block">
+          <div class="block-head">
+            <span class="block-num">BLOCK 01</span>
+            <span class="block-title">Soccer Activation</span>
+            <span class="block-time">10 MIN</span>
+          </div>
+          <div class="drill-line"><div class="name"><strong>Light dribble pattern</strong> · figure-8 around 2 cones, 8 yds apart, both feet<span class="pos-tags"><span class="pos both">BOTH</span></span></div><div class="scheme">4 min</div></div>
+          <div class="drill-line"><div class="name"><strong>Wall passes — short range</strong> · prep for the runs ahead<span class="pos-tags"><span class="pos both">BOTH</span></span></div><div class="scheme">3 min</div></div>
+          <div class="drill-line"><div class="name"><strong>Acceleration starts</strong> · 3-point start, 10 yards at 80%<span class="pos-tags"><span class="pos both">BOTH</span></span></div><div class="scheme">3 × 10 yds</div></div>
+        </div>
+
+        <div class="session-block">
+          <div class="block-head">
+            <span class="block-num">BLOCK 02</span>
+            <span class="block-title">Defensive Footwork + 1v1 Defending</span>
+            <span class="block-time">12 MIN</span>
+          </div>
+          <div class="drill-line"><div class="name"><strong>Defensive shuffle + close-out</strong> · backpedal 5 yds, shuffle laterally 5 yds, sprint forward 5 yds to close down<span class="pos-tags"><span class="pos irb">IRB</span></span><span class="why">The exact movement pattern when a winger receives wide and you're closing from the inside. Drill the footwork until it's automatic.</span></div><div class="scheme">8 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>Jockey + force outside</strong> · approach with body angled to force the attacker down the line · cone setup simulating winger receiving<span class="pos-tags"><span class="pos irb">IRB</span></span><span class="why">As an inverted RB you're often the only defender wide — never let them come inside. Body shape sells the position before the ball arrives.</span></div><div class="scheme">8 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>High-press chase</strong> · sprint 15 yards forward to "press" a stationary ball, decelerate, jockey<span class="pos-tags"><span class="pos lw">LW</span></span><span class="why">Modern wingers are the first line of defense. Get the jog-to-sprint trigger ingrained.</span></div><div class="scheme">8 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>Recovery sprint to wide channel</strong> · start central (inverted position), sprint 25 yds to outside cone (RB position), arrive ready<span class="pos-tags"><span class="pos irb">IRB</span></span><span class="why">The single biggest weakness of inverted fullbacks. When possession breaks, you have to GET BACK. This is that exact run.</span></div><div class="scheme">6 reps</div></div>
+        </div>
+
+        <div class="session-block">
+          <div class="block-head">
+            <span class="block-num">BLOCK 03</span>
+            <span class="block-title">Repeat-Sprint Conditioning</span>
+            <span class="block-time">15 MIN</span>
+          </div>
+          <div class="drill-line"><div class="name"><strong>Pyramid runs</strong> · 30-40-50-40-30 yards · walk-back rest · pace 85%<span class="pos-tags"><span class="pos both">BOTH</span></span></div><div class="scheme">2 sets</div></div>
+          <div class="drill-line"><div class="name"><strong>Repeat sprints — RB profile</strong> · 6 × 40 yds @ 85% · 60 sec rest · simulates overlap-and-recover<span class="pos-tags"><span class="pos irb">IRB</span></span></div><div class="scheme">6 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>Curved runs — winger arc</strong> · arc out wide then cut into the box · 30 yds<span class="pos-tags"><span class="pos lw">LW</span></span><span class="why">The exact run a winger makes attacking the back post. Curved, not straight — buys separation from the centre back.</span></div><div class="scheme">4 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>Walk + water break</strong> · full recovery before Block 04</div><div class="scheme">2-3 min</div></div>
+        </div>
+
+        <div class="session-block">
+          <div class="block-head">
+            <span class="block-num">BLOCK 04</span>
+            <span class="block-title">Technical Under Fatigue</span>
+            <span class="block-time">12 MIN</span>
+          </div>
+          <div class="drill-line"><div class="name"><strong>Sprint 30 yds → wall pass series</strong> · arrive breathing hard, hit 10 clean wall passes, both feet · repeat 4×<span class="pos-tags"><span class="pos both">BOTH</span></span><span class="why">Match minutes 60-90 are where games are won — when your touch is supposed to be at its worst. Train it there.</span></div><div class="scheme">4 rounds</div></div>
+          <div class="drill-line"><div class="name"><strong>Recovery → switch under fatigue</strong> · sprint 25 yds (recovering as IRB), receive ball, immediately hit a 30-yd diagonal switch · both feet<span class="pos-tags"><span class="pos irb">IRB</span></span></div><div class="scheme">5 reps each foot</div></div>
+          <div class="drill-line"><div class="name"><strong>Cutback on overlap</strong> · sprint to byline (RB lane), pull ball back across goal · simulate cross to cutback runner<span class="pos-tags"><span class="pos irb">IRB</span></span></div><div class="scheme">6 reps</div></div>
+        </div>
+
+        <div class="session-block">
+          <div class="block-head">
+            <span class="block-num">BLOCK 05</span>
+            <span class="block-title">Cool-down</span>
+            <span class="block-time">5 MIN</span>
+          </div>
+          <div class="drill-line"><div class="name"><strong>Walk + breathe</strong> · 2 minutes minimum<span class="pos-tags"><span class="pos both">BOTH</span></span></div><div class="scheme">2 min</div></div>
+          <div class="drill-line"><div class="name"><strong>Static stretch</strong> · adductors, calves, hamstrings, hip flexors<span class="pos-tags"><span class="pos both">BOTH</span></span></div><div class="scheme">3 min</div></div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- FRIDAY — UPPER PULL + LIGHT SOCCER -->
+    <div class="day-block">
+      <div class="day-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>5</strong>Day</div><div class="day-label"><div class="d">Fri</div><div class="date">May 1</div></div><div class="day-name">Upper Pull <span style="color: var(--text-muted); font-weight: 300;">+ Pre-Match Soccer</span></div><div class="duration">60–75 MIN · LOW LOWER DEMAND</div><div class="chevron"></div></div>
+      <div class="day-body">
+
+      <div class="day-section mobility">
+        <div class="label">Mobility Warm-up <span class="opt">opt</span> · 6 min</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">Dead hang</span><span class="equip">pull-up bar</span><span class="scheme">2 × 30s</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">T-spine extensions on roller</span><span class="equip">foam roller</span><span class="scheme">2 × 8</span></div>
+          <div class="exercise-row"><span class="num">03</span><span class="name">Banded lat stretch</span><span class="equip">band + anchor</span><span class="scheme">45s/side</span></div>
+        </div>
+      </div>
+
+      <div class="day-section core">
+        <div class="label">Upper Pull Lift <span class="req">req</span> · 30–35 min · COMPRESSED</div>
+        <div class="exercise-list">
+          <div class="exercise-row has-phases"><span class="num">01</span><span class="name">Pull-up <em style="color:var(--text-muted)">— weighted in P3</em><span class="detail">primary vertical pull</span></span><span class="equip">pull-up bar (+ belt P3)</span><div class="scheme-grid"><div class="pp"><span class="ph">P1</span><span class="pv">3×AMRAP</span></div><div class="pp"><span class="ph">P2</span><span class="pv">3×AMRAP+1</span></div><div class="pp"><span class="ph">P3</span><span class="pv">4×5 wtd</span></div><div class="pp"><span class="ph">P4</span><span class="pv">3×AMRAP</span></div><div class="pp"><span class="ph">P5</span><span class="pv">3×AMRAP</span></div></div></div>
+          <div class="exercise-row has-phases"><span class="num">02</span><span class="name">Barbell / DB / Pendlay Row<span class="detail">primary horizontal pull — varies by phase</span></span><span class="equip">barbell or DBs</span><div class="scheme-grid"><div class="pp"><span class="ph">P1</span><span class="pv">3×8 BB</span></div><div class="pp"><span class="ph">P2</span><span class="pv">3×8 BB</span></div><div class="pp"><span class="ph">P3</span><span class="pv">3×6 Pndly</span></div><div class="pp"><span class="ph">P4</span><span class="pv">3×8 DB</span></div><div class="pp"><span class="ph">P5</span><span class="pv">3×8 DB</span></div></div></div>
+          <div class="exercise-row has-phases"><span class="num">03</span><span class="name">Face Pull<span class="detail">rear delt + external rotation</span></span><span class="equip">cable + rope</span><div class="scheme-grid"><div class="pp"><span class="ph">P1</span><span class="pv">3×15</span></div><div class="pp"><span class="ph">P2</span><span class="pv">3×15</span></div><div class="pp"><span class="ph">P3</span><span class="pv">3×15</span></div><div class="pp"><span class="ph">P4</span><span class="pv">3×15</span></div><div class="pp"><span class="ph">P5</span><span class="pv">3×15</span></div></div></div>
+          <div class="exercise-row has-phases"><span class="num">04</span><span class="name">DB Curl <em style="color:var(--text-muted)">/ Hammer Curl P3</em><span class="detail">biceps</span></span><span class="equip">DBs</span><div class="scheme-grid"><div class="pp"><span class="ph">P1</span><span class="pv">3×10</span></div><div class="pp"><span class="ph">P2</span><span class="pv">3×10</span></div><div class="pp"><span class="ph">P3</span><span class="pv">3×10 Hmr</span></div><div class="pp"><span class="ph">P4</span><span class="pv">3×10</span></div><div class="pp skip"><span class="ph">P5</span><span class="pv">—</span></div></div></div>
+        </div>
+      </div>
+
+      <div class="day-section band">
+        <div class="label">Band Pull Volume <span class="opt">opt</span> · 4 min</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">Band Pull-Apart — high/mid/low</span><span class="equip">light/med band</span><span class="scheme">15 × 3 angles</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">Banded External Rotation</span><span class="equip">light band</span><span class="scheme">2 × 12/side</span></div>
+        </div>
+      </div>
+
+      <div class="day-section soccer">
+        <div class="label">Pre-Match Soccer <span class="req">req</span> · 25–30 min</div>
+
+        <div class="position-legend">
+          <span class="pl-label">Drill Focus</span>
+          <span class="pl-key"><span class="pos irb">IRB</span> Inverted Right Back</span>
+          <span class="pl-key"><span class="pos lw">LW</span> Left Winger</span>
+          <span class="pl-key"><span class="pos both">BOTH</span> Both positions</span>
+        </div>
+
+        <div class="session-block">
+          <div class="block-head">
+            <span class="block-num">BLOCK 01</span>
+            <span class="block-title">Touch + Vision Refresh</span>
+            <span class="block-time">8 MIN</span>
+          </div>
+          <div class="drill-line"><div class="name"><strong>Juggling sequence</strong> · R foot only · L foot only · alternating · all surfaces<span class="pos-tags"><span class="pos both">BOTH</span></span></div><div class="scheme">4 min</div></div>
+          <div class="drill-line"><div class="name"><strong>Wall pass — long-range driven</strong> · 18 yards out · clean strikes · both feet<span class="pos-tags"><span class="pos irb">IRB</span></span><span class="why">Sharpen the switch-of-play stroke before tomorrow.</span></div><div class="scheme">4 min</div></div>
+        </div>
+
+        <div class="session-block">
+          <div class="block-head">
+            <span class="block-num">BLOCK 02</span>
+            <span class="block-title">Position-Specific Finishing</span>
+            <span class="block-time">12 MIN</span>
+          </div>
+          <div class="drill-line"><div class="name"><strong>Curling shot from left half-space</strong> · 18 yds, take a touch inside, curl with right foot · placement<span class="pos-tags"><span class="pos lw">LW</span></span><span class="why">The exact finish you'll look for tomorrow if you start at LW. Get the timing dialed in now.</span></div><div class="scheme">5 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>Driven strike — right half-space</strong> · 22 yds, take a touch forward, strike low across goal with left foot<span class="pos-tags"><span class="pos lw">LW</span></span></div><div class="scheme">4 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>Long-range strike from depth</strong> · 25 yds, simulate IRB stepping into space · 3 each foot<span class="pos-tags"><span class="pos irb">IRB</span></span></div><div class="scheme">6 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>Finishing volume cap</strong> · stop the moment any rep feels heavy on the planted leg<span class="pos-tags"><span class="pos both">BOTH</span></span></div><div class="scheme">— hard rule</div></div>
+        </div>
+
+        <div class="session-block">
+          <div class="block-head">
+            <span class="block-num">BLOCK 03</span>
+            <span class="block-title">Set Pieces + Strides</span>
+            <span class="block-time">8–10 MIN</span>
+          </div>
+          <div class="drill-line"><div class="name"><strong>Free kicks — both feet</strong> · 6-8 reps · in-swinger right, out-swinger left<span class="pos-tags"><span class="pos both">BOTH</span></span><span class="why">Set-piece flexibility is rare and high-value — both feet means the team can pick the side based on goal angle, not your foot.</span></div><div class="scheme">6-8 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>Crossing — right foot</strong> · 4 driven crosses from RB position, far post target<span class="pos-tags"><span class="pos irb">IRB</span></span></div><div class="scheme">4 reps</div></div>
+          <div class="drill-line"><div class="name"><strong>5 × 40-yard strides at 70%</strong> · NEVER above 70% · 30s walk between<span class="pos-tags"><span class="pos both">BOTH</span></span></div><div class="scheme">5 reps</div></div>
+        </div>
+      </div>
+
+      <div class="day-section coretrain">
+        <div class="label">Lateral Chain Core <span class="opt">opt</span> · 5–8 min · post-lift</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">Side Plank<span class="detail">straight line, hold</span></span><span class="equip">bodyweight</span><span class="scheme">3 × 30s/side</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">Side Plank with Hip Dip<span class="detail">controlled, oblique work</span></span><span class="equip">bodyweight</span><span class="scheme">2 × 8/side</span></div>
+          <div class="exercise-row"><span class="num">03</span><span class="name">Copenhagen Plank<span class="detail">top leg on bench · adductor + oblique</span></span><span class="equip">bench</span><span class="scheme">2 × 15s/side</span></div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- SATURDAY -->
+    <div class="day-block pro-day">
+      <div class="day-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>6</strong>Day</div><div class="day-label"><div class="d">Sat</div><div class="date">May 2</div></div><div class="day-name">1-on-1 Pro Session</div><div class="duration">PRO-LED · HIGH CNS</div><div class="chevron"></div></div>
+      <div class="day-body">
+      <div class="day-section">
+        <div class="label" style="color: var(--warning);">External Session</div>
+        <p style="color: var(--text-secondary); font-size: 14.5px; line-height: 1.65;">Dictated by the pro. Eat at maintenance — not a deficit day. Hydrate aggressively starting Friday evening. <strong style="color: var(--text-primary);">No optional modules on Saturday.</strong> The pro session IS the day.</p>
+      </div>
+    </div>
+    </div>
+
+    <!-- SUNDAY -->
+    <div class="day-block match-day">
+      <div class="day-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>7</strong>Day</div><div class="day-label"><div class="d">Sun</div><div class="date">May 3</div></div><div class="day-name">Match Day</div><div class="duration">PERFORMANCE</div><div class="chevron"></div></div>
+      <div class="day-body">
+
+      <div class="day-section coretrain">
+        <div class="label">Match-Day Core Activation <span class="opt">opt</span> · 3 min · pre-warm-up</div>
+        <div class="exercise-list">
+          <div class="exercise-row"><span class="num">01</span><span class="name">Dead Bug<span class="detail">slow, focused breathing, brace each rep</span></span><span class="equip">bodyweight</span><span class="scheme">8 reps/side</span></div>
+          <div class="exercise-row"><span class="num">02</span><span class="name">Bird Dog<span class="detail">2 sec hold at extension</span></span><span class="equip">bodyweight</span><span class="scheme">6 reps/side</span></div>
+          <div class="exercise-row"><span class="num">03</span><span class="name">Glute Bridge with Brace<span class="detail">squeeze glutes + brace abs · 3 sec hold</span></span><span class="equip">bodyweight</span><span class="scheme">10 reps</span></div>
+        </div>
+      </div>
+
+      <div class="day-section">
+        <div class="label" style="color: var(--soccer-bright);">Pre-Match · 90 min before kickoff</div>
+        <p style="color: var(--text-secondary); font-size: 14.5px; line-height: 1.65;">Oatmeal with banana + 1 scoop whey, or equivalent — ~60g carbs, ~25g protein, low fat and fiber. Black coffee 45 min before kickoff if you use caffeine. Dynamic warm-up with the team.</p>
+      </div>
+      <div class="day-section">
+        <div class="label" style="color: var(--soccer-bright);">Post-Match · within 60 min</div>
+        <p style="color: var(--text-secondary); font-size: 14.5px; line-height: 1.65;">~40g protein + carbs (chocolate milk, rice + chicken, smoothie). Long walk in the evening if anything feels tight. Sleep 8.5+ hours into Monday.</p>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASE SCHEMES -->
+<section id="phases">
+  <div class="container">
+    <div class="section-meta">04 — Phase schemes</div>
+    <h2 class="section-title">Five phases.<br><em>What changes</em>.</h2>
+    <p class="section-intro">Daily structure stays constant. What shifts: sets, reps, intensity, and a few exercise swaps on the main lifts. Soccer session structure is the same across all phases — only intensity scales naturally with conditioning.</p>
+
+    <div class="collapse-controls" data-section="phases">
+      <div class="label-side">Phase Schemes · 5 phases × 3 days</div>
+      <div class="btns">
+        <button onclick="setAllDays('phases', false)" class="active">Expand All</button>
+        <button onclick="setAllDays('phases', true)">Collapse All</button>
+      </div>
+    </div>
+
+    <!-- PHASE 1 -->
+    <div class="phase">
+      <div class="phase-header">
+        <div>
+          <div class="phase-num">PHASE 01</div>
+          <div class="phase-name">Adaptation <em>— groove the patterns.</em></div>
+        </div>
+        <div class="phase-weeks">W1–4 · APR 27 → MAY 24 · RPE 7</div>
+      </div>
+      <div class="phase-focus">Moderate loads, room to spare every set. Add 5 lb/week to compounds. Soccer sessions: focus on technical quality, not pace. Week 4 is a deload — halve all working sets, skip Wed lift, replace Tue/Thu with light technical only (30 min each).</div>
+
+      <div class="day-block">
+        <div class="day-head phase-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>P1</strong>Mon</div><div class="day-name">Upper Push</div><div class="duration">PHASE 1</div><div class="chevron"></div></div>
+      <div class="day-body">
+        <div class="day-section core">
+          <div class="exercise-list">
+            <div class="exercise-row"><span class="num">01</span><span class="name">Bench Press</span><span class="equip">barbell</span><span class="scheme">4 × 6 · RPE 7</span></div>
+            <div class="exercise-row"><span class="num">02</span><span class="name">Seated DB Shoulder Press</span><span class="equip">DBs</span><span class="scheme">3 × 8</span></div>
+            <div class="exercise-row"><span class="num">03</span><span class="name">Incline DB Press</span><span class="equip">DBs</span><span class="scheme">3 × 10</span></div>
+            <div class="exercise-row"><span class="num">04</span><span class="name">Lateral Raise</span><span class="equip">DBs (light)</span><span class="scheme">3 × 12</span></div>
+            <div class="exercise-row"><span class="num">05</span><span class="name">Tricep Pushdown</span><span class="equip">cable</span><span class="scheme">3 × 12</span></div>
+            <div class="exercise-row"><span class="num">06</span><span class="name">Rear Delt Fly</span><span class="equip">DBs</span><span class="scheme">3 × 12</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="day-block">
+        <div class="day-head phase-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>P1</strong>Wed</div><div class="day-name">Lower Lift</div><div class="duration">PHASE 1</div><div class="chevron"></div></div>
+      <div class="day-body">
+        <div class="day-section core">
+          <div class="exercise-list">
+            <div class="exercise-row"><span class="num">01</span><span class="name">Back Squat <em style="color:var(--text-muted)">or Trap Bar DL</em></span><span class="equip">barbell</span><span class="scheme">4 × 5 · RPE 7</span></div>
+            <div class="exercise-row"><span class="num">02</span><span class="name">Bulgarian Split Squat</span><span class="equip">DBs + bench</span><span class="scheme">3 × 8 / leg</span></div>
+            <div class="exercise-row"><span class="num">03</span><span class="name">Romanian Deadlift</span><span class="equip">barbell</span><span class="scheme">3 × 8</span></div>
+            <div class="exercise-row"><span class="num">04</span><span class="name">Lying Leg Curl</span><span class="equip">leg curl machine</span><span class="scheme">3 × 12</span></div>
+            <div class="exercise-row"><span class="num">05</span><span class="name">Single-Leg Calf Raise</span><span class="equip">step / machine</span><span class="scheme">3 × 12</span></div>
+            <div class="exercise-row"><span class="num">06</span><span class="name">Hanging Leg Raise</span><span class="equip">pull-up bar</span><span class="scheme">3 × 10</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="day-block">
+        <div class="day-head phase-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>P1</strong>Fri</div><div class="day-name">Upper Pull</div><div class="duration">PHASE 1 · COMPRESSED</div><div class="chevron"></div></div>
+      <div class="day-body">
+        <div class="day-section core">
+          <div class="exercise-list">
+            <div class="exercise-row"><span class="num">01</span><span class="name">Pull-up</span><span class="equip">pull-up bar</span><span class="scheme">3 × AMRAP</span></div>
+            <div class="exercise-row"><span class="num">02</span><span class="name">Barbell Row</span><span class="equip">barbell</span><span class="scheme">3 × 8</span></div>
+            <div class="exercise-row"><span class="num">03</span><span class="name">Face Pull</span><span class="equip">cable + rope</span><span class="scheme">3 × 15</span></div>
+            <div class="exercise-row"><span class="num">04</span><span class="name">DB Curl</span><span class="equip">DBs</span><span class="scheme">3 × 10</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div class="phase">
+      <div class="phase-header">
+        <div>
+          <div class="phase-num">PHASE 02</div>
+          <div class="phase-name">Build <em>— add load + soccer pace.</em></div>
+        </div>
+        <div class="phase-weeks">W5–8 · MAY 25 → JUN 21 · RPE 8</div>
+      </div>
+      <div class="phase-focus">Volume up on lifts. RPE 8 on main compounds. Soccer sessions: sprint pace climbs to 85-90%. Plyometric finisher (Wed) becomes available. Week 8 deload follows same pattern as W4.</div>
+
+      <div class="day-block">
+        <div class="day-head phase-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>P2</strong>Mon</div><div class="day-name">Upper Push</div><div class="duration">PHASE 2</div><div class="chevron"></div></div>
+      <div class="day-body">
+        <div class="day-section core">
+          <div class="exercise-list">
+            <div class="exercise-row"><span class="num">01</span><span class="name">Bench Press</span><span class="equip">barbell</span><span class="scheme">4 × 5 · RPE 8</span></div>
+            <div class="exercise-row"><span class="num">02</span><span class="name">Seated DB Shoulder Press</span><span class="equip">DBs</span><span class="scheme">4 × 8</span></div>
+            <div class="exercise-row"><span class="num">03</span><span class="name">Incline DB Press</span><span class="equip">DBs</span><span class="scheme">4 × 10</span></div>
+            <div class="exercise-row"><span class="num">04</span><span class="name">Lateral Raise</span><span class="equip">DBs (light)</span><span class="scheme">4 × 12</span></div>
+            <div class="exercise-row"><span class="num">05</span><span class="name">Tricep Pushdown</span><span class="equip">cable</span><span class="scheme">4 × 12</span></div>
+            <div class="exercise-row"><span class="num">06</span><span class="name">Rear Delt Fly</span><span class="equip">DBs</span><span class="scheme">3 × 15</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="day-block">
+        <div class="day-head phase-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>P2</strong>Wed</div><div class="day-name">Lower Lift</div><div class="duration">PHASE 2</div><div class="chevron"></div></div>
+      <div class="day-body">
+        <div class="day-section core">
+          <div class="exercise-list">
+            <div class="exercise-row"><span class="num">01</span><span class="name">Back Squat <em style="color:var(--text-muted)">or Trap Bar DL</em></span><span class="equip">barbell</span><span class="scheme">4 × 5 · RPE 8</span></div>
+            <div class="exercise-row"><span class="num">02</span><span class="name">Bulgarian Split Squat</span><span class="equip">DBs + bench</span><span class="scheme">4 × 8 / leg</span></div>
+            <div class="exercise-row"><span class="num">03</span><span class="name">Romanian Deadlift</span><span class="equip">barbell</span><span class="scheme">4 × 8</span></div>
+            <div class="exercise-row"><span class="num">04</span><span class="name">Lying Leg Curl</span><span class="equip">leg curl machine</span><span class="scheme">4 × 12</span></div>
+            <div class="exercise-row"><span class="num">05</span><span class="name">Single-Leg Calf Raise</span><span class="equip">step / machine</span><span class="scheme">4 × 12</span></div>
+            <div class="exercise-row"><span class="num">06</span><span class="name">Plank</span><span class="equip">bodyweight</span><span class="scheme">3 × 45 sec</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="day-block">
+        <div class="day-head phase-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>P2</strong>Fri</div><div class="day-name">Upper Pull</div><div class="duration">PHASE 2 · COMPRESSED</div><div class="chevron"></div></div>
+      <div class="day-body">
+        <div class="day-section core">
+          <div class="exercise-list">
+            <div class="exercise-row"><span class="num">01</span><span class="name">Pull-up</span><span class="equip">pull-up bar</span><span class="scheme">3 × AMRAP+1</span></div>
+            <div class="exercise-row"><span class="num">02</span><span class="name">Bent-Over Row</span><span class="equip">barbell</span><span class="scheme">3 × 8</span></div>
+            <div class="exercise-row"><span class="num">03</span><span class="name">Face Pull</span><span class="equip">cable + rope</span><span class="scheme">3 × 15</span></div>
+            <div class="exercise-row"><span class="num">04</span><span class="name">DB Curl</span><span class="equip">DBs</span><span class="scheme">3 × 10</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="phase">
+      <div class="phase-header">
+        <div>
+          <div class="phase-num">PHASE 03</div>
+          <div class="phase-name">Peak <em>— heaviest weeks.</em></div>
+        </div>
+        <div class="phase-weeks">W9–12 · JUN 22 → JUL 19 · RPE 8.5</div>
+      </div>
+      <div class="phase-focus">Heaviest loads, lowest reps. Soccer pace can stay at 85% — don't try to peak both at once. Week 12 deload is the most important of the cycle. Watch RHR, sleep, mood.</div>
+
+      <div class="day-block">
+        <div class="day-head phase-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>P3</strong>Mon</div><div class="day-name">Upper Push</div><div class="duration">PHASE 3</div><div class="chevron"></div></div>
+      <div class="day-body">
+        <div class="day-section core">
+          <div class="exercise-list">
+            <div class="exercise-row"><span class="num">01</span><span class="name">Bench Press</span><span class="equip">barbell</span><span class="scheme">5 × 3 · RPE 8.5</span></div>
+            <div class="exercise-row"><span class="num">02</span><span class="name">Overhead Press <em style="color:var(--text-muted)">replaces seated DB</em></span><span class="equip">barbell</span><span class="scheme">4 × 6</span></div>
+            <div class="exercise-row"><span class="num">03</span><span class="name">Incline DB Press</span><span class="equip">DBs</span><span class="scheme">4 × 8</span></div>
+            <div class="exercise-row"><span class="num">04</span><span class="name">Lateral Raise</span><span class="equip">DBs (light)</span><span class="scheme">4 × 15</span></div>
+            <div class="exercise-row"><span class="num">05</span><span class="name">Tricep Pushdown</span><span class="equip">cable</span><span class="scheme">4 × 15</span></div>
+            <div class="exercise-row"><span class="num">06</span><span class="name">Rear Delt Fly</span><span class="equip">DBs</span><span class="scheme">3 × 15</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="day-block">
+        <div class="day-head phase-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>P3</strong>Wed</div><div class="day-name">Lower Lift</div><div class="duration">PHASE 3</div><div class="chevron"></div></div>
+      <div class="day-body">
+        <div class="day-section core">
+          <div class="exercise-list">
+            <div class="exercise-row"><span class="num">01</span><span class="name">Back Squat <em style="color:var(--text-muted)">or Trap Bar DL</em></span><span class="equip">barbell</span><span class="scheme">5 × 3 · RPE 8.5</span></div>
+            <div class="exercise-row"><span class="num">02</span><span class="name">Bulgarian Split Squat</span><span class="equip">DBs + bench</span><span class="scheme">4 × 6 / leg</span></div>
+            <div class="exercise-row"><span class="num">03</span><span class="name">Romanian Deadlift</span><span class="equip">barbell</span><span class="scheme">4 × 6</span></div>
+            <div class="exercise-row"><span class="num">04</span><span class="name">Lying Leg Curl</span><span class="equip">leg curl machine</span><span class="scheme">4 × 12</span></div>
+            <div class="exercise-row"><span class="num">05</span><span class="name">Single-Leg Calf Raise</span><span class="equip">step / machine</span><span class="scheme">4 × 10</span></div>
+            <div class="exercise-row"><span class="num">06</span><span class="name">Cable Woodchop</span><span class="equip">cable</span><span class="scheme">3 × 10 / side</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="day-block">
+        <div class="day-head phase-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>P3</strong>Fri</div><div class="day-name">Upper Pull</div><div class="duration">PHASE 3 · COMPRESSED</div><div class="chevron"></div></div>
+      <div class="day-body">
+        <div class="day-section core">
+          <div class="exercise-list">
+            <div class="exercise-row"><span class="num">01</span><span class="name">Weighted Pull-up</span><span class="equip">pull-up bar + dip belt</span><span class="scheme">4 × 5</span></div>
+            <div class="exercise-row"><span class="num">02</span><span class="name">Pendlay Row</span><span class="equip">barbell</span><span class="scheme">3 × 6</span></div>
+            <div class="exercise-row"><span class="num">03</span><span class="name">Face Pull</span><span class="equip">cable + rope</span><span class="scheme">3 × 15</span></div>
+            <div class="exercise-row"><span class="num">04</span><span class="name">Hammer Curl <em style="color:var(--text-muted)">replaces DB curl</em></span><span class="equip">DBs</span><span class="scheme">3 × 10</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- PHASE 4 -->
+    <div class="phase">
+      <div class="phase-header">
+        <div>
+          <div class="phase-num">PHASE 04</div>
+          <div class="phase-name">Maintain <em>— hold strength.</em></div>
+        </div>
+        <div class="phase-weeks">W13–16 · JUL 20 → AUG 16 · RPE 7–8</div>
+      </div>
+      <div class="phase-focus">Volume drops to 3 sets on most lifts. Hold Phase 3 loads. Soccer sessions stay full intensity — fitness peaks here. Week 16 deload is the last full one.</div>
+
+      <div class="day-block">
+        <div class="day-head phase-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>P4</strong>Mon</div><div class="day-name">Upper Push</div><div class="duration">PHASE 4</div><div class="chevron"></div></div>
+      <div class="day-body">
+        <div class="day-section core">
+          <div class="exercise-list">
+            <div class="exercise-row"><span class="num">01</span><span class="name">Bench Press</span><span class="equip">barbell</span><span class="scheme">3 × 6 · RPE 7–8</span></div>
+            <div class="exercise-row"><span class="num">02</span><span class="name">Seated DB Shoulder Press</span><span class="equip">DBs</span><span class="scheme">3 × 8</span></div>
+            <div class="exercise-row"><span class="num">03</span><span class="name">Incline DB Press</span><span class="equip">DBs</span><span class="scheme">3 × 10</span></div>
+            <div class="exercise-row"><span class="num">04</span><span class="name">Lateral Raise</span><span class="equip">DBs (light)</span><span class="scheme">3 × 12</span></div>
+            <div class="exercise-row"><span class="num">05</span><span class="name">Tricep Pushdown</span><span class="equip">cable</span><span class="scheme">3 × 12</span></div>
+            <div class="exercise-row"><span class="num">06</span><span class="name">Rear Delt Fly</span><span class="equip">DBs</span><span class="scheme">3 × 12</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="day-block">
+        <div class="day-head phase-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>P4</strong>Wed</div><div class="day-name">Lower Lift</div><div class="duration">PHASE 4</div><div class="chevron"></div></div>
+      <div class="day-body">
+        <div class="day-section core">
+          <div class="exercise-list">
+            <div class="exercise-row"><span class="num">01</span><span class="name">Back Squat <em style="color:var(--text-muted)">or Trap Bar DL</em></span><span class="equip">barbell</span><span class="scheme">3 × 5 · RPE 7–8</span></div>
+            <div class="exercise-row"><span class="num">02</span><span class="name">Bulgarian Split Squat</span><span class="equip">DBs + bench</span><span class="scheme">3 × 8 / leg</span></div>
+            <div class="exercise-row"><span class="num">03</span><span class="name">Romanian Deadlift</span><span class="equip">barbell</span><span class="scheme">3 × 8</span></div>
+            <div class="exercise-row"><span class="num">04</span><span class="name">Lying Leg Curl</span><span class="equip">leg curl machine</span><span class="scheme">3 × 12</span></div>
+            <div class="exercise-row"><span class="num">05</span><span class="name">Single-Leg Calf Raise</span><span class="equip">step / machine</span><span class="scheme">3 × 12</span></div>
+            <div class="exercise-row"><span class="num">06</span><span class="name">Hanging Leg Raise</span><span class="equip">pull-up bar</span><span class="scheme">3 × 10</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="day-block">
+        <div class="day-head phase-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>P4</strong>Fri</div><div class="day-name">Upper Pull</div><div class="duration">PHASE 4 · COMPRESSED</div><div class="chevron"></div></div>
+      <div class="day-body">
+        <div class="day-section core">
+          <div class="exercise-list">
+            <div class="exercise-row"><span class="num">01</span><span class="name">Pull-up</span><span class="equip">pull-up bar</span><span class="scheme">3 × AMRAP</span></div>
+            <div class="exercise-row"><span class="num">02</span><span class="name">DB Row</span><span class="equip">DBs + bench</span><span class="scheme">3 × 8</span></div>
+            <div class="exercise-row"><span class="num">03</span><span class="name">Face Pull</span><span class="equip">cable + rope</span><span class="scheme">3 × 15</span></div>
+            <div class="exercise-row"><span class="num">04</span><span class="name">DB Curl</span><span class="equip">DBs</span><span class="scheme">3 × 10</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- PHASE 5 -->
+    <div class="phase">
+      <div class="phase-header">
+        <div>
+          <div class="phase-num">PHASE 05</div>
+          <div class="phase-name">Final Push <em>— taper in.</em></div>
+        </div>
+        <div class="phase-weeks">W17–19 · AUG 17 → SEP 6 · RPE 7</div>
+      </div>
+      <div class="phase-focus">Calories pull lower. Volume drops to minimum effective dose on lifts. Soccer sessions stay — they're how you arrive lean and SHARP, not lean and depleted. Week 19 is a true taper.</div>
+
+      <div class="day-block">
+        <div class="day-head phase-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>P5</strong>Mon</div><div class="day-name">Upper Push</div><div class="duration">PHASE 5</div><div class="chevron"></div></div>
+      <div class="day-body">
+        <div class="day-section core">
+          <div class="exercise-list">
+            <div class="exercise-row"><span class="num">01</span><span class="name">Bench Press</span><span class="equip">barbell</span><span class="scheme">3 × 6 · RPE 7</span></div>
+            <div class="exercise-row"><span class="num">02</span><span class="name">Seated DB Shoulder Press</span><span class="equip">DBs</span><span class="scheme">3 × 8</span></div>
+            <div class="exercise-row"><span class="num">03</span><span class="name">Incline DB Press</span><span class="equip">DBs</span><span class="scheme">3 × 10</span></div>
+            <div class="exercise-row"><span class="num">04</span><span class="name">Lateral Raise</span><span class="equip">DBs (light)</span><span class="scheme">3 × 12</span></div>
+            <div class="exercise-row"><span class="num">05</span><span class="name">Tricep Pushdown</span><span class="equip">cable</span><span class="scheme">3 × 12</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="day-block">
+        <div class="day-head phase-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>P5</strong>Wed</div><div class="day-name">Lower Lift</div><div class="duration">PHASE 5</div><div class="chevron"></div></div>
+      <div class="day-body">
+        <div class="day-section core">
+          <div class="exercise-list">
+            <div class="exercise-row"><span class="num">01</span><span class="name">Back Squat <em style="color:var(--text-muted)">or Trap Bar DL</em></span><span class="equip">barbell</span><span class="scheme">3 × 5 · RPE 7</span></div>
+            <div class="exercise-row"><span class="num">02</span><span class="name">Bulgarian Split Squat</span><span class="equip">DBs + bench</span><span class="scheme">3 × 6 / leg</span></div>
+            <div class="exercise-row"><span class="num">03</span><span class="name">Romanian Deadlift</span><span class="equip">barbell</span><span class="scheme">3 × 6</span></div>
+            <div class="exercise-row"><span class="num">04</span><span class="name">Lying Leg Curl</span><span class="equip">leg curl machine</span><span class="scheme">3 × 12</span></div>
+            <div class="exercise-row"><span class="num">05</span><span class="name">Single-Leg Calf Raise</span><span class="equip">step / machine</span><span class="scheme">3 × 12</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="day-block">
+        <div class="day-head phase-head" onclick="toggleDay(this)" tabindex="0" role="button" aria-expanded="true"><div class="seq"><strong>P5</strong>Fri</div><div class="day-name">Upper Pull</div><div class="duration">PHASE 5 · COMPRESSED</div><div class="chevron"></div></div>
+      <div class="day-body">
+        <div class="day-section core">
+          <div class="exercise-list">
+            <div class="exercise-row"><span class="num">01</span><span class="name">Pull-up</span><span class="equip">pull-up bar</span><span class="scheme">3 × AMRAP</span></div>
+            <div class="exercise-row"><span class="num">02</span><span class="name">DB Row</span><span class="equip">DBs + bench</span><span class="scheme">3 × 8</span></div>
+            <div class="exercise-row"><span class="num">03</span><span class="name">Face Pull</span><span class="equip">cable + rope</span><span class="scheme">3 × 15</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOBILITY MODULE -->
+<section id="mobility">
+  <div class="container">
+    <div class="section-meta">05 — Mobility Module</div>
+    <h2 class="section-title">Optional, but<br><em>compounding</em>.</h2>
+    <p class="section-intro">Same routines as v2 — they don't need re-architecting. Pick the one that matches the day. 8-12 minutes is plenty. Skip none, all, or some.</p>
+
+    <div class="collapse-controls" data-module-section="mobility">
+      <div class="label-side">Mobility Module · 4 routines</div>
+      <div class="btns">
+        <button onclick="setAllModules('mobility', false)" class="active">Expand All</button>
+        <button onclick="setAllModules('mobility', true)">Collapse All</button>
+      </div>
+    </div>
+
+    <div class="module-block mobility">
+      <div class="head" onclick="toggleModule(this)" tabindex="0" role="button" aria-expanded="true"><div class="dot"></div><h3>Pre-Lower (Wed)</h3><div class="when">Before squat day</div></div>
+      <div class="body">
+        <p>Hips and ankles take a beating from soccer. Wed is the only heavy lower day, so this is non-negotiable in spirit even if technically optional.</p>
+        <div class="module-routine">
+          <h5>Routine — 10 min</h5>
+          <div class="move"><div class="name">90/90 Hip Switches<span class="desc">sit, alternate IR/ER between legs</span></div><div class="scheme">2 × 10/side</div></div>
+          <div class="move"><div class="name">World's Greatest Stretch<span class="desc">lunge → t-spine rotation → hamstring</span></div><div class="scheme">5/side</div></div>
+          <div class="move"><div class="name">Couch Stretch<span class="desc">hip flexor + quad</span></div><div class="scheme">60s/side</div></div>
+          <div class="move"><div class="name">Ankle Wall Test<span class="desc">dorsiflexion check — both sides</span></div><div class="scheme">10/side</div></div>
+          <div class="move"><div class="name">Adductor Rock-Back<span class="desc">groin opener</span></div><div class="scheme">8/side</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-block mobility">
+      <div class="head" onclick="toggleModule(this)" tabindex="0" role="button" aria-expanded="true"><div class="dot"></div><h3>Pre-Upper (Mon, Fri)</h3><div class="when">Before push or pull days</div></div>
+      <div class="body">
+        <p>T-spine and shoulders. Cumulative effect across 19 weeks is shoulder health, which matters more in Phase 3 when overhead and weighted pull-ups appear.</p>
+        <div class="module-routine">
+          <h5>Routine — 8 min</h5>
+          <div class="move"><div class="name">Cat-Cow + T-Spine Rotations</div><div class="scheme">10 + 10</div></div>
+          <div class="move"><div class="name">Dead Hang<span class="desc">shoulder + spinal decompression</span></div><div class="scheme">2 × 30s</div></div>
+          <div class="move"><div class="name">Wall Slides<span class="desc">scap activation</span></div><div class="scheme">2 × 10</div></div>
+          <div class="move"><div class="name">Banded Shoulder Dislocates<span class="desc">light band</span></div><div class="scheme">2 × 10</div></div>
+          <div class="move"><div class="name">T-Spine Foam Roller Extensions</div><div class="scheme">2 × 8</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-block mobility">
+      <div class="head" onclick="toggleModule(this)" tabindex="0" role="button" aria-expanded="true"><div class="dot"></div><h3>Pre-Soccer (Tue, Thu)</h3><div class="when">Before solo soccer sessions</div></div>
+      <div class="body">
+        <p>Soccer-specific dynamic prep. The Tue/Thu sessions already have dynamic warm-ups built in (Block 1) — this 8-min add-on is for additional joint prep before high-intensity work.</p>
+        <div class="module-routine">
+          <h5>Routine — 8 min</h5>
+          <div class="move"><div class="name">Leg Swings — front/back, side/side</div><div class="scheme">15 each</div></div>
+          <div class="move"><div class="name">Walking Knee Hugs into Quad Pull</div><div class="scheme">2 × 10 yds</div></div>
+          <div class="move"><div class="name">Walking Toy Soldiers<span class="desc">dynamic hamstring</span></div><div class="scheme">2 × 10 yds</div></div>
+          <div class="move"><div class="name">Lateral Lunges<span class="desc">side-to-side</span></div><div class="scheme">10/side</div></div>
+          <div class="move"><div class="name">90/90 Hip Switches</div><div class="scheme">10/side</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-block mobility">
+      <div class="head" onclick="toggleModule(this)" tabindex="0" role="button" aria-expanded="true"><div class="dot"></div><h3>Recovery — Post-Match (Sun PM)</h3><div class="when">Decompression flow</div></div>
+      <div class="body">
+        <p>Slow, restorative, parasympathetic. Foam roller does most of the work. Sunday evening or any day you feel beat up.</p>
+        <div class="module-routine">
+          <h5>Routine — 12-15 min</h5>
+          <div class="move"><div class="name">Foam Roll — quads, IT, glutes, lats<span class="desc">slow passes, hold tight spots 20s</span></div><div class="scheme">90s each</div></div>
+          <div class="move"><div class="name">Pigeon Stretch<span class="desc">deep glute</span></div><div class="scheme">90s/side</div></div>
+          <div class="move"><div class="name">Child's Pose with Reach</div><div class="scheme">60s</div></div>
+          <div class="move"><div class="name">Supine Spinal Twist</div><div class="scheme">60s/side</div></div>
+          <div class="move"><div class="name">Wall Calf Stretch</div><div class="scheme">90s</div></div>
+          <div class="move"><div class="name">Box Breathing<span class="desc">4-4-4-4 — closes the routine</span></div><div class="scheme">2 min</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAND MODULE -->
+<section id="bands">
+  <div class="container">
+    <div class="section-meta">06 — Band Module</div>
+    <h2 class="section-title">Cheap.<br>Surprisingly <em>useful</em>.</h2>
+    <p class="section-intro">Bands fill specific gaps the free weights miss — glute medius activation, rotator cuff health, posterior delt volume. Tuesday and Wednesday glute activation is the highest-value of the bunch given the right-leg asymmetry.</p>
+
+    <div class="collapse-controls" data-module-section="bands">
+      <div class="label-side">Band Module · 2 routines</div>
+      <div class="btns">
+        <button onclick="setAllModules('bands', false)" class="active">Expand All</button>
+        <button onclick="setAllModules('bands', true)">Collapse All</button>
+      </div>
+    </div>
+
+    <div class="module-block band">
+      <div class="head" onclick="toggleModule(this)" tabindex="0" role="button" aria-expanded="true"><div class="dot"></div><h3>Glute Activation (Tue + Wed)</h3><div class="when">Before soccer or before squat</div></div>
+      <div class="body">
+        <p>Five minutes pre-Tue session and pre-Wed lift. Fires glute medius, gets right hip stabilizers online, addresses asymmetry from the top down. Cumulative — works over weeks, not in one session.</p>
+        <div class="module-routine">
+          <h5>Routine — 5 min</h5>
+          <div class="move"><div class="name">Mini-Band Lateral Walks<span class="desc">band above knees, slight squat</span></div><div class="scheme">2 × 10/side</div></div>
+          <div class="move"><div class="name">Mini-Band Monster Walks<span class="desc">forward + backward</span></div><div class="scheme">2 × 10 each</div></div>
+          <div class="move"><div class="name">Banded Clamshells<span class="desc">15 right, 12 left — emphasis right hip</span></div><div class="scheme">15R / 12L</div></div>
+          <div class="move"><div class="name">Banded Glute Bridge<span class="desc">drive knees out at top</span></div><div class="scheme">2 × 12</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-block band">
+      <div class="head" onclick="toggleModule(this)" tabindex="0" role="button" aria-expanded="true"><div class="dot"></div><h3>Posterior Delt + Cuff (Mon, Fri)</h3><div class="when">5 min finisher on lift days</div></div>
+      <div class="body">
+        <p>Band work hits posterior shoulder and rotator cuff better than dumbbells. Cumulative effect across 19 weeks supports bench and overhead work in Phase 3.</p>
+        <div class="module-routine">
+          <h5>Routine — 5 min</h5>
+          <div class="move"><div class="name">Band Pull-Apart<span class="desc">arms straight, wide, squeeze scaps</span></div><div class="scheme">3 × 20</div></div>
+          <div class="move"><div class="name">Band Pull-Apart — high/mid/low<span class="desc">change angle each set</span></div><div class="scheme">15 × 3 angles</div></div>
+          <div class="move"><div class="name">Banded External Rotation<span class="desc">elbow tucked, rotate out</span></div><div class="scheme">2 × 12/side</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLYO MODULE -->
+<section id="plyo">
+  <div class="container">
+    <div class="section-meta">07 — Plyometric Module</div>
+    <h2 class="section-title">Power, sparingly.<br><em>Quality over volume</em>.</h2>
+    <p class="section-intro">Plyos are the highest-CNS optional module. Phase 1: skip entirely. Phase 2+: Wednesday after the heavy lift. Soccer-specific plyos can also live in the Thu session warm-up. Volume stays low — this is neural training, not conditioning.</p>
+
+    <div class="collapse-controls" data-module-section="plyo">
+      <div class="label-side">Plyometric Module · 3 sections</div>
+      <div class="btns">
+        <button onclick="setAllModules('plyo', false)" class="active">Expand All</button>
+        <button onclick="setAllModules('plyo', true)">Collapse All</button>
+      </div>
+    </div>
+
+    <div class="module-block plyo">
+      <div class="head" onclick="toggleModule(this)" tabindex="0" role="button" aria-expanded="true"><div class="dot"></div><h3>Wednesday Finisher · Phase 2+</h3><div class="when">After lower lift, before leaving the gym</div></div>
+      <div class="body">
+        <p>Cleanest slot. CNS already primed by squat. Thursday is soccer (running, not lifting), so residual fatigue won't compound dangerously. <strong>Always step DOWN from the box, never jump down.</strong></p>
+        <div class="module-routine">
+          <h5>Routine — 8 min</h5>
+          <div class="move"><div class="name">Box Jumps<span class="desc">18-24" box · explosive concentric · step down</span></div><div class="scheme">4 × 4</div></div>
+          <div class="move"><div class="name">Single-Leg Pogo<span class="desc">stiff ankle, low amplitude, fast contact</span></div><div class="scheme">3 × 15/side</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-block plyo">
+      <div class="head" onclick="toggleModule(this)" tabindex="0" role="button" aria-expanded="true"><div class="dot"></div><h3>Thursday Soccer Plyo · Phase 3+</h3><div class="when">Built into Block 01 of the Thu session</div></div>
+      <div class="body">
+        <p>Soccer-specific plyometric work integrated into the Thu warm-up after Phase 3 — replaces or supplements the standard acceleration starts. Adds rate of force development specific to changes of direction and explosive starts in match situations.</p>
+        <div class="module-routine">
+          <h5>Add-on routine — 5 min</h5>
+          <div class="move"><div class="name">Lateral Bounds<span class="desc">push off one foot, land soft, hold 1s</span></div><div class="scheme">3 × 6/side</div></div>
+          <div class="move"><div class="name">Broad Jump → Stick<span class="desc">distance + controlled landing</span></div><div class="scheme">3 × 3</div></div>
+          <div class="move"><div class="name">A-Skips → B-Skips at pace<span class="desc">running mechanics + power transfer</span></div><div class="scheme">2 × 20 yds each</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-block plyo">
+      <div class="head" onclick="toggleModule(this)" tabindex="0" role="button" aria-expanded="true"><div class="dot"></div><h3>Plyo Rules — Read First</h3><div class="when">Don't ignore these</div></div>
+      <div class="body">
+        <p><strong>Phase 1: NO plyometrics.</strong> Build patterns and fitness base first.</p>
+        <p><strong>Reps before fatigue.</strong> If a rep is slower than the last, set is over. Plyos train RFD — slow plyos train slow movement, opposite of the point.</p>
+        <p><strong>Right calf flag.</strong> Single-leg pogos and lateral bounds will expose the asymmetry. If right side feels off two consecutive sessions, drop unilateral plyo for 1-2 weeks; substitute isometric calf work.</p>
+        <p><strong>Never on bad sleep or after a heavy match.</strong> RHR up, sleep under 6 hrs, or heavy minutes Sunday — skip Wednesday plyo, lift only.</p>
+        <p><strong>Plyos do not replace lifting.</strong> Finisher, not substitute. Strength is the foundation that powers the plyo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE MODULE -->
+<section id="core">
+  <div class="container">
+    <div class="section-meta">08 — Core Module</div>
+    <h2 class="section-title">Hidden lever.<br><em>Position-specific</em>.</h2>
+    <p class="section-intro">Core for an inverted RB / left winger isn't crunches and planks for a six-pack — it's anti-rotation for jockeying, anti-extension to protect the lower back during sprinting and kicking, rotational power to drive your strikes and switches, and lateral chain strength for change-of-direction. Four routines, each tied to specific days. Stack what you have time for; the daily activation is the closest to non-negotiable.</p>
+
+    <div class="collapse-controls" data-module-section="core">
+      <div class="label-side">Core Module · 6 routines</div>
+      <div class="btns">
+        <button onclick="setAllModules('core', false)" class="active">Expand All</button>
+        <button onclick="setAllModules('core', true)">Collapse All</button>
+      </div>
+    </div>
+
+    <div class="module-block core">
+      <div class="head" onclick="toggleModule(this)" tabindex="0" role="button" aria-expanded="true"><div class="dot"></div><h3>Daily Activation (Mon, Tue, Wed, Thu, Fri)</h3><div class="when">3–5 min · pre-session warm-up</div></div>
+      <div class="body">
+        <p>The minimum effective dose. Three exercises, three minutes, gets the deep core firing before any session — lift OR soccer. <strong>Skipping this is fine on individual days; skipping it for a whole week shows up as tweaked low-back during heavy squats or strikes.</strong> Habit is the point.</p>
+        <div class="module-routine">
+          <h5>Routine — 3–5 min · daily</h5>
+          <div class="move"><div class="name">Dead Bug<span class="desc">slow tempo, opposite arm/leg, lower back glued to floor</span></div><div class="scheme">2 × 8/side</div></div>
+          <div class="move"><div class="name">Bird Dog<span class="desc">opposite arm/leg, hold 2 sec at extension, no hip drop</span></div><div class="scheme">2 × 8/side</div></div>
+          <div class="move"><div class="name">Hollow Hold<span class="desc">low back pressed flat, arms by ears, legs 6 inches off ground</span></div><div class="scheme">2 × 20s</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-block core">
+      <div class="head" onclick="toggleModule(this)" tabindex="0" role="button" aria-expanded="true"><div class="dot"></div><h3>Anti-Rotation + Anti-Extension (Wed, post-lift)</h3><div class="when">10 min · after squat session</div></div>
+      <div class="body">
+        <p>Heavy stability day. Anti-rotation builds the trunk strength that lets you jockey wingers without losing balance. Anti-extension protects the lower back from the cumulative load of squatting + sprinting + kicking. <strong>This routine is what keeps you healthy through Phase 3 when load is at peak.</strong></p>
+        <div class="module-routine">
+          <h5>Routine — 10 min · post-Wed lift</h5>
+          <div class="move"><div class="name">Pallof Press<span class="desc">cable or band, brace against rotation, slow press out and back</span></div><div class="scheme">3 × 10/side</div></div>
+          <div class="move"><div class="name">Half-Kneeling Pallof Hold<span class="desc">isometric, knee on ground that matches the band side</span></div><div class="scheme">3 × 20s/side</div></div>
+          <div class="move"><div class="name">Suitcase Carry<span class="desc">heavy DB one hand, walk 30 yds, do NOT lean — anti-lateral flexion</span></div><div class="scheme">3 × 30 yds/side</div></div>
+          <div class="move"><div class="name">Ab Wheel Rollout<span class="desc">from knees · ribs tucked · do NOT extend lumbar spine</span></div><div class="scheme">3 × 8</div></div>
+          <div class="move"><div class="name">Hanging Knee Raise<span class="desc">slow, no swing, post-tilt pelvis at the top</span></div><div class="scheme">3 × 10</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-block core">
+      <div class="head" onclick="toggleModule(this)" tabindex="0" role="button" aria-expanded="true"><div class="dot"></div><h3>Rotational Power (Tue, post-soccer)</h3><div class="when">8 min · after Tue soccer session</div></div>
+      <div class="body">
+        <p>The "striking and switching" routine. Builds the hip-to-shoulder rotational drive that powers your right-foot diagonal switches (TFA-style) and your left-half-space curling shots. <strong>Two-footed players need both directions trained equally</strong> — most people only develop their dominant rotation. Don't be most people.</p>
+        <div class="module-routine">
+          <h5>Routine — 8 min · post-Tue soccer</h5>
+          <div class="move"><div class="name">Med Ball Rotational Throw<span class="desc">against wall, full hip drive, both directions equal</span></div><div class="scheme">3 × 6/side</div></div>
+          <div class="move"><div class="name">Cable Wood Chop — High to Low<span class="desc">simulates striking the ball, both sides</span></div><div class="scheme">3 × 10/side</div></div>
+          <div class="move"><div class="name">Cable Wood Chop — Low to High<span class="desc">simulates whipping a cross, both sides</span></div><div class="scheme">3 × 10/side</div></div>
+          <div class="move"><div class="name">Russian Twist with Med Ball<span class="desc">controlled tempo, NOT speed reps — slower is harder</span></div><div class="scheme">3 × 12/side</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-block core">
+      <div class="head" onclick="toggleModule(this)" tabindex="0" role="button" aria-expanded="true"><div class="dot"></div><h3>Lateral Chain (Fri, post-lift)</h3><div class="when">5–8 min · light · after Fri pull session</div></div>
+      <div class="body">
+        <p>Light lateral chain work — Friday is the day before the pro session, so this stays low-volume. Targets the obliques and QL (quadratus lumborum) which power lateral cuts, shielding the ball from defenders, and the change-of-direction demands of wide play.</p>
+        <div class="module-routine">
+          <h5>Routine — 5–8 min · post-Fri lift</h5>
+          <div class="move"><div class="name">Side Plank<span class="desc">straight line from heel to head, hold</span></div><div class="scheme">3 × 30s/side</div></div>
+          <div class="move"><div class="name">Side Plank with Hip Dip<span class="desc">slow controlled dip + lift, oblique work</span></div><div class="scheme">2 × 8/side</div></div>
+          <div class="move"><div class="name">Copenhagen Plank<span class="desc">top leg on bench · adductor + oblique combo · CRUCIAL for soccer</span></div><div class="scheme">2 × 15s/side</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-block core">
+      <div class="head" onclick="toggleModule(this)" tabindex="0" role="button" aria-expanded="true"><div class="dot"></div><h3>Match-Day Activation (Sun, pre-match)</h3><div class="when">3 min · before warm-up</div></div>
+      <div class="body">
+        <p>Wakes up the deep core right before kickoff. Fits between getting changed and the team warm-up. <strong>Same routine works pre-tournament as well</strong> — used it last weekend, will use it again. Three exercises, sixty seconds each, brace and breathe.</p>
+        <div class="module-routine">
+          <h5>Routine — 3 min · pre-match</h5>
+          <div class="move"><div class="name">Dead Bug<span class="desc">slow, focused breathing, brace each rep</span></div><div class="scheme">8 reps/side</div></div>
+          <div class="move"><div class="name">Bird Dog<span class="desc">2 sec hold at extension</span></div><div class="scheme">6 reps/side</div></div>
+          <div class="move"><div class="name">Glute Bridge with Brace<span class="desc">squeeze glutes, brace abs, hold 3 sec at top</span></div><div class="scheme">10 reps</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-block core">
+      <div class="head" onclick="toggleModule(this)" tabindex="0" role="button" aria-expanded="true"><div class="dot"></div><h3>Core Rules — Read Before Adding</h3><div class="when">Cumulative effect, not single sessions</div></div>
+      <div class="body">
+        <p><strong>Quality over quantity.</strong> A clean Pallof press with proper bracing beats 50 sloppy crunches. If form breaks, the set is done.</p>
+        <p><strong>Slow is harder than fast.</strong> Especially Russian twists and rotations — speed reps look impressive, slow reps build the actual stability and strength soccer demands.</p>
+        <p><strong>The ribs-tucked rule.</strong> If you ever feel core work in your lower back rather than your abs, your ribs are flared. Tuck them, post-tilt the pelvis, brace through the core. Re-set and continue.</p>
+        <p><strong>Both sides equal.</strong> For unilateral work (carries, side planks, Pallof, chops), train both directions identically. As a two-footed player your right-side and left-side rotational power should match — most players are 30-40% asymmetric. You shouldn't be.</p>
+        <p><strong>Don't stack two heavy core sessions on one day.</strong> Wednesday's anti-rotation block is heavy on its own — don't add the Friday lateral chain work to Wednesday too. Spread the stimulus across the week.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="top-line">THE CUT · v4.3 · CALENDAR · APR 27 — SEP 7, 2026</div>
+    <div>SOCCER FIRST · LIFTING SECOND · LEAN THIRD</div>
+  </div>
+</footer>
+
+
+<script>
+function toggleDay(headEl) {
+  const block = headEl.parentElement;
+  const collapsed = block.classList.toggle('collapsed');
+  headEl.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+}
+
+function setAllDays(sectionType, collapsed) {
+  // Find the section by walking up from the controls
+  const controls = document.querySelector('.collapse-controls[data-section="' + sectionType + '"]');
+  if (!controls) return;
+  // Find parent <section> element
+  let parent = controls.parentElement;
+  while (parent && parent.tagName !== 'SECTION') {
+    parent = parent.parentElement;
+  }
+  if (!parent) return;
+  const blocks = parent.querySelectorAll('.day-block');
+  blocks.forEach(b => {
+    if (collapsed) {
+      b.classList.add('collapsed');
+      const head = b.querySelector('.day-head');
+      if (head) head.setAttribute('aria-expanded', 'false');
+    } else {
+      b.classList.remove('collapsed');
+      const head = b.querySelector('.day-head');
+      if (head) head.setAttribute('aria-expanded', 'true');
+    }
+  });
+  // Update active button state
+  controls.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+  const activeIdx = collapsed ? 1 : 0;
+  controls.querySelectorAll('button')[activeIdx].classList.add('active');
+}
+
+// Allow keyboard activation (Enter/Space) on day heads
+document.addEventListener('keydown', function(e) {
+  if (e.target.classList && e.target.classList.contains('day-head') && (e.key === 'Enter' || e.key === ' ')) {
+    e.preventDefault();
+    toggleDay(e.target);
+  }
+});
+
+function toggleModule(headEl) {
+  const block = headEl.closest('.module-block');
+  if (!block) return;
+  const collapsed = block.classList.toggle('collapsed');
+  headEl.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+}
+
+function setAllModules(sectionId, collapsed) {
+  const section = document.getElementById(sectionId);
+  if (!section) return;
+  const blocks = section.querySelectorAll('.module-block');
+  blocks.forEach(b => {
+    if (collapsed) {
+      b.classList.add('collapsed');
+      const head = b.querySelector('.head');
+      if (head) head.setAttribute('aria-expanded', 'false');
+    } else {
+      b.classList.remove('collapsed');
+      const head = b.querySelector('.head');
+      if (head) head.setAttribute('aria-expanded', 'true');
+    }
+  });
+  // Update active button state
+  const ctrls = document.querySelector('.collapse-controls[data-module-section="' + sectionId + '"]');
+  if (ctrls) {
+    ctrls.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    const idx = collapsed ? 1 : 0;
+    ctrls.querySelectorAll('button')[idx].classList.add('active');
+  }
+}
+
+// Allow keyboard toggle (Enter/Space) on module-block heads
+document.addEventListener('keydown', function(e) {
+  if (e.target.classList && e.target.classList.contains('head') &&
+      e.target.closest('.module-block') &&
+      (e.key === 'Enter' || e.key === ' ')) {
+    e.preventDefault();
+    toggleModule(e.target);
+  }
+});
+
+
+
+// ============================================================
+// INTERACTIVE CALENDAR
+// ============================================================
+const PROGRAM = {
+  start: new Date(2026, 3, 27), // Apr 27, 2026 (month is 0-indexed)
+  end:   new Date(2026, 8, 6),  // Sep 6, 2026 (last Sunday)
+  totalWeeks: 19,
+  phases: [
+    { n: 1, name: 'Adapt',  startWeek: 1,  endWeek: 4,  cls: 'p1', start: 'Apr 27', end: 'May 24' },
+    { n: 2, name: 'Build',  startWeek: 5,  endWeek: 8,  cls: 'p2', start: 'May 25', end: 'Jun 21' },
+    { n: 3, name: 'Peak',   startWeek: 9,  endWeek: 12, cls: 'p3', start: 'Jun 22', end: 'Jul 19' },
+    { n: 4, name: 'Hold',   startWeek: 13, endWeek: 16, cls: 'p4', start: 'Jul 20', end: 'Aug 16' },
+    { n: 5, name: 'Taper',  startWeek: 17, endWeek: 19, cls: 'p5', start: 'Aug 17', end: 'Sep 6' },
+  ],
+  deloadWeeks: [4, 8, 12, 16],
+  // Day templates by day-of-week (0=Mon..6=Sun)
+  templates: [
+    { dow: 'Mon', short: 'M', name: 'Upper Push + Light Touches', type: 'lift-upper', icon: '↑',
+      duration: '60–70 min',
+      focus: 'Bench, OHP/DB Press, Incline DB, Lateral Raise, Tricep Pushdown · 15 min light ball touches before lift',
+      sectionId: 'daily' },
+    { dow: 'Tue', short: 'T', name: 'Soccer — Wide Areas + Receiving', type: 'soccer', icon: '⚽',
+      duration: '60–80 min',
+      focus: 'Receiving on the half-turn (IRB) · diagonal switches both feet · 1v1 attacking from wide (LW) · position-specific finishing',
+      sectionId: 'daily' },
+    { dow: 'Wed', short: 'W', name: 'Lower Lift — Heavy + Accessories', type: 'lift-lower', icon: '↓',
+      duration: '65–80 min',
+      focus: 'Squat or Trap Bar DL · Bulgarian Split Squat (right leads) · RDL · Walking Lunge · Adductor + Leg Curl · Single-Leg Calf Raise · Core',
+      sectionId: 'daily' },
+    { dow: 'Thu', short: 'T', name: 'Soccer — Transition + Defending', type: 'soccer', icon: '⚽',
+      duration: '55–65 min',
+      focus: 'Defensive footwork · 1v1 defending · jockey-and-force-outside · recovery sprints · technical work under fatigue',
+      sectionId: 'daily' },
+    { dow: 'Fri', short: 'F', name: 'Upper Pull + Light Soccer', type: 'lift-upper', icon: '↑',
+      duration: '60–75 min',
+      focus: 'Pull-up · Row · Face Pull · Curl · Rear Delt Fly · light pre-match touches and strides',
+      sectionId: 'daily' },
+    { dow: 'Sat', short: 'S', name: 'Pro Session', type: 'pro', icon: '★',
+      duration: 'pro-led',
+      focus: '1-on-1 with the pro · highest skill day of the week · eat at maintenance · hydrate aggressively starting Friday evening',
+      sectionId: 'daily' },
+    { dow: 'Sun', short: 'S', name: 'Match Day', type: 'match', icon: '◉',
+      duration: '90 min',
+      focus: 'Match · the match is the work · pre-meal 90 min before kickoff (~60g carbs, 25g protein) · sleep 8.5+ hrs into Monday',
+      sectionId: 'daily' },
+  ],
+  liftSchemes: {
+    'mon-upper': {
+      1: [['Bench Press', '4×6 RPE 7'], ['Pull-up', '4×AMRAP'], ['Seated DB Press', '3×8'], ['Bent-Over Row', '3×8'], ['Lateral Raise + Face Pull', '3×12 each'], ['DB Curl + Pushdown', '3×10 each']],
+      2: [['Bench Press', '4×5 RPE 8'], ['Pull-up', '4×AMRAP+1'], ['Seated DB Press', '4×8'], ['Bent-Over Row', '4×8'], ['Lateral Raise + Face Pull', '4×12 each'], ['DB Curl + Pushdown', '4×10 each']],
+      3: [['Bench Press', '5×3 RPE 8.5'], ['Weighted Pull-up', '5×5'], ['OHP', '4×6'], ['Pendlay Row', '4×6'], ['Lateral Raise + Face Pull', '4×15 each'], ['Hammer Curl + Pushdown', '4×10 each']],
+      4: [['Bench Press', '3×6 RPE 7-8'], ['Pull-up', '3×AMRAP'], ['Seated DB Press', '3×8'], ['DB Row', '3×8'], ['Lateral Raise + Face Pull', '3×12 each'], ['DB Curl + Pushdown', '3×10 each']],
+      5: [['Bench Press', '3×6 RPE 7'], ['Pull-up', '3×AMRAP'], ['Seated DB Press', '3×8'], ['DB Row', '3×8'], ['Lateral Raise + Face Pull', '3×12 each']],
+    },
+    'wed-lower': {
+      1: [['Back Squat / Trap Bar DL', '4×5 RPE 7'], ['Bulgarian Split Squat (R leads)', '3×8/leg'], ['Romanian Deadlift', '3×8'], ['Walking Lunge', '3×10/leg'], ['Hip Adductor + Leg Curl', '3×12 each'], ['Single-Leg Calf Raise', '3R/2L × 12'], ['Hanging Leg Raise', '3×10']],
+      2: [['Back Squat / Trap Bar DL', '4×5 RPE 8'], ['Bulgarian Split Squat (R leads)', '4×8/leg'], ['Romanian Deadlift', '4×8'], ['Walking Lunge', '3×12/leg'], ['Hip Adductor + Leg Curl', '4×12 each'], ['Single-Leg Calf Raise', '4R/3L × 12'], ['Plank', '3×45s']],
+      3: [['Back Squat / Trap Bar DL', '5×3 RPE 8.5'], ['Bulgarian Split Squat (R leads)', '4×6/leg'], ['Romanian Deadlift', '4×6'], ['Loaded Reverse Lunge', '3×10/leg'], ['Hip Adductor + Leg Curl', '4×15 each'], ['Single-Leg Calf Raise', '4R/3L × 10'], ['Cable Woodchop', '3×10/side']],
+      4: [['Back Squat / Trap Bar DL', '3×5 RPE 7-8'], ['Bulgarian Split Squat (R leads)', '3×8/leg'], ['Romanian Deadlift', '3×8'], ['Walking Lunge', '3×10/leg'], ['Hip Adductor + Leg Curl', '3×12 each'], ['Single-Leg Calf Raise', '3R/2L × 12'], ['Hanging Leg Raise', '3×10']],
+      5: [['Back Squat / Trap Bar DL', '3×5 RPE 7'], ['Bulgarian Split Squat (R leads)', '3×6/leg'], ['Romanian Deadlift', '3×6'], ['Walking Lunge', '2×10/leg'], ['Hip Adductor + Leg Curl', '3×12 each'], ['Single-Leg Calf Raise', '3R/2L × 12']],
+    },
+    'fri-pull': {
+      // Note: Friday is upper PULL focus per current daily structure
+      1: [['Pull-up', '4×AMRAP'], ['Bent-Over Row', '3×8'], ['Face Pull', '3×15'], ['DB Curl', '3×10'], ['Rear Delt Fly', '3×12']],
+      2: [['Pull-up', '4×AMRAP+1'], ['Bent-Over Row', '4×8'], ['Face Pull', '4×15'], ['DB Curl', '4×10'], ['Rear Delt Fly', '4×12']],
+      3: [['Weighted Pull-up', '5×5'], ['Pendlay Row', '4×6'], ['Face Pull', '4×15'], ['Hammer Curl', '4×10'], ['Rear Delt Fly', '4×15']],
+      4: [['Pull-up', '3×AMRAP'], ['DB Row', '3×8'], ['Face Pull', '3×15'], ['DB Curl', '3×10'], ['Rear Delt Fly', '3×12']],
+      5: [['Pull-up', '3×AMRAP'], ['DB Row', '3×8'], ['Face Pull', '3×15'], ['DB Curl', '3×10']],
+    },
+  },
+};
+
+const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const MONTH_FULL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const DOW_FULL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+function fmtDateShort(d) {
+  return MONTH_NAMES[d.getMonth()] + ' ' + d.getDate();
+}
+function fmtDateFull(d) {
+  return DOW_FULL[d.getDay()] + ', ' + MONTH_FULL[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+}
+
+function getDayInfo(date) {
+  // Returns {weekNum, phaseNum, phase, isDeload, template, dayIndex}
+  const msPerDay = 86400000;
+  const daysSinceStart = Math.floor((date - PROGRAM.start) / msPerDay);
+  if (daysSinceStart < 0 || daysSinceStart >= 19 * 7) {
+    return null;
+  }
+  const weekNum = Math.floor(daysSinceStart / 7) + 1;
+  const dayInWeek = daysSinceStart % 7; // 0=Mon..6=Sun
+  const phase = PROGRAM.phases.find(p => weekNum >= p.startWeek && weekNum <= p.endWeek);
+  const isDeload = PROGRAM.deloadWeeks.includes(weekNum);
+  const template = PROGRAM.templates[dayInWeek];
+  return {
+    date, weekNum, dayInWeek,
+    phaseNum: phase.n, phase, isDeload, template,
+  };
+}
+
+function buildCalendar() {
+  const grid = document.getElementById('cal-grid');
+  if (!grid) return;
+  let html = '';
+  let currentPhase = null;
+  const msPerDay = 86400000;
+
+  for (let w = 0; w < 19; w++) {
+    const weekStart = new Date(PROGRAM.start.getTime() + w * 7 * msPerDay);
+    const weekEnd = new Date(PROGRAM.start.getTime() + (w * 7 + 6) * msPerDay);
+    const weekNum = w + 1;
+    const phase = PROGRAM.phases.find(p => weekNum >= p.startWeek && weekNum <= p.endWeek);
+    const isDeload = PROGRAM.deloadWeeks.includes(weekNum);
+
+    // Phase header at the start of each phase
+    if (!currentPhase || currentPhase.n !== phase.n) {
+      currentPhase = phase;
+      html += '<div class="cal-phase-row">';
+      html += '<div class="cal-phase-header ' + phase.cls + '">';
+      html += '<strong>Phase ' + phase.n + '</strong>';
+      html += '<span>· ' + phase.name + '</span>';
+      html += '<span class="dates">' + phase.start + ' – ' + phase.end + ' · weeks ' + phase.startWeek + '–' + phase.endWeek + '</span>';
+      html += '</div>';
+    }
+
+    // Week row
+    html += '<div class="cal-week' + (isDeload ? ' deload' : '') + '">';
+    html += '<div class="cal-week-label">';
+    html += '<span class="wnum">W' + weekNum + (isDeload ? ' · DELOAD' : '') + '</span>';
+    html += '<span class="wdates">' + fmtDateShort(weekStart) + ' – ' + fmtDateShort(weekEnd) + '</span>';
+    html += '</div>';
+
+    for (let d = 0; d < 7; d++) {
+      const date = new Date(PROGRAM.start.getTime() + (w * 7 + d) * msPerDay);
+      const tpl = PROGRAM.templates[d];
+      const dateStr = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+      html += '<div class="cal-day ' + tpl.type + '" data-date="' + dateStr + '" onclick="selectCalDay(\'' + dateStr + '\')">';
+      html += '<span class="date">' + date.getDate() + '</span>';
+      html += '<span class="day-letter">' + tpl.short + '</span>';
+      html += '<span class="icon">' + tpl.icon + '</span>';
+      html += '</div>';
+    }
+
+    html += '</div>'; // close cal-week
+
+    // Close phase row at end of phase
+    const isLastInPhase = (weekNum === phase.endWeek);
+    if (isLastInPhase) {
+      html += '</div>'; // close cal-phase-row
+      currentPhase = null;
+    }
+  }
+
+  grid.innerHTML = html;
+
+  // Highlight today
+  highlightToday();
+}
+
+function highlightToday() {
+  const today = new Date();
+  const todayStr = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  const todayEl = document.querySelector('.cal-day[data-date="' + todayStr + '"]');
+  if (todayEl) todayEl.classList.add('today');
+}
+
+function selectCalDay(dateStr) {
+  const parts = dateStr.split('-').map(Number);
+  const date = new Date(parts[0], parts[1] - 1, parts[2]);
+  const info = getDayInfo(date);
+  if (!info) return;
+
+  // Visual selection
+  document.querySelectorAll('.cal-day').forEach(el => el.classList.remove('selected'));
+  const cell = document.querySelector('.cal-day[data-date="' + dateStr + '"]');
+  if (cell) cell.classList.add('selected');
+
+  // Build detail content
+  const detail = document.getElementById('cal-detail');
+  const content = document.getElementById('cal-detail-content');
+
+  let html = '';
+  html += '<div class="meta-row">DAY ' + ((info.weekNum - 1) * 7 + info.dayInWeek + 1) + ' OF 133 · TAP A DIFFERENT DAY TO CHANGE</div>';
+  html += '<h3>' + DOW_FULL[date.getDay()] + ', <em>' + MONTH_FULL[date.getMonth()] + ' ' + date.getDate() + '</em></h3>';
+  html += '<div class="phase-line">PHASE ' + info.phaseNum + ' · ' + info.phase.name.toUpperCase() + ' · WEEK ' + info.weekNum;
+  if (info.isDeload) html += '<span class="deload-tag">Deload Week</span>';
+  html += '</div>';
+
+  // Workout card
+  html += '<div class="workout-card">';
+  html += '<div class="name">' + info.template.name + '</div>';
+  html += '<div class="duration">' + info.template.duration + '</div>';
+  html += '<div class="focus">' + info.template.focus + '</div>';
+
+  // Lift schemes for lift days
+  let schemeKey = null;
+  if (info.template.type === 'lift-upper' && info.template.dow === 'Mon') schemeKey = 'mon-upper';
+  else if (info.template.type === 'lift-lower') schemeKey = 'wed-lower';
+  else if (info.template.type === 'lift-upper' && info.template.dow === 'Fri') schemeKey = 'fri-pull';
+
+  if (schemeKey && PROGRAM.liftSchemes[schemeKey]) {
+    const scheme = PROGRAM.liftSchemes[schemeKey][info.phaseNum];
+    if (scheme) {
+      html += '<div class="schemes">';
+      html += '<h5>Phase ' + info.phaseNum + ' Schemes' + (info.isDeload ? ' · CUT WORKING SETS IN HALF (DELOAD)' : '') + '</h5>';
+      scheme.forEach(([name, reps]) => {
+        html += '<div class="scheme-row"><div class="name"><strong>' + name + '</strong></div><div class="reps">' + reps + '</div></div>';
+      });
+      html += '</div>';
+    }
+  }
+  html += '</div>'; // close workout-card
+
+  // Deload callout
+  if (info.isDeload) {
+    html += '<div class="deload-callout"><strong>This is a deload week.</strong> Cut all working sets in half. Same exercises, same loads (or 5–10% lighter), fewer sets. Skip optional plyo and core finishers. The point is recovery so the next training block is productive — pushing through deload undoes the prior phase.</div>';
+  }
+
+  // Special notes for specific day types
+  if (info.template.type === 'match') {
+    html += '<div class="deload-callout" style="border-left-color: var(--band); background: rgba(157, 126, 175, 0.06);"><strong>Match Day.</strong> No optional modules. Focus: pre-match meal 90 min before kickoff (~60g carbs, ~25g protein, low fat/fiber). Refuel within 60 min post-match. Sleep 8.5+ hrs into Monday.</div>';
+  } else if (info.template.type === 'pro') {
+    html += '<div class="deload-callout" style="border-left-color: var(--warning); background: rgba(201, 161, 74, 0.06);"><strong>Pro Session Day.</strong> No optional modules stacked. Eat at maintenance (not deficit). Hydrate aggressively starting Friday evening. Highest skill day of the week.</div>';
+  }
+
+  // Action buttons
+  html += '<div class="actions">';
+  html += '<a href="#daily" onclick="closeCalDetail()">Open Day Template ↓</a>';
+  if (schemeKey || info.template.type === 'lift-upper' || info.template.type === 'lift-lower') {
+    html += '<a href="#phases" onclick="closeCalDetail()">Open Phase ' + info.phaseNum + ' Schemes ↓</a>';
+  }
+  html += '</div>';
+
+  content.innerHTML = html;
+  detail.classList.add('active');
+
+  // Scroll detail into view
+  setTimeout(() => {
+    detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 50);
+}
+
+function closeCalDetail() {
+  const detail = document.getElementById('cal-detail');
+  if (detail) detail.classList.remove('active');
+  document.querySelectorAll('.cal-day').forEach(el => el.classList.remove('selected'));
+}
+
+// Build calendar on load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', buildCalendar);
+} else {
+  buildCalendar();
+}
+
+</script>
+
+</body>
+</html>
